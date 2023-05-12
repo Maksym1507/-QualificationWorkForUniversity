@@ -2,8 +2,10 @@ import { observer } from "mobx-react-lite";
 import { FC, ReactElement, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { catalogStore } from "../../App";
+import { basketStore, catalogStore } from "../../App";
 import NoMatchComponent from "../../components/NoMatch";
+import { CatalogItemModel } from "../../models/catalogItemModel";
+import BasketItemModel from "../../models/basketItemModel";
 
 const CatalogItem: FC<any> = observer((): ReactElement => {
   const { id } = useParams();
@@ -49,6 +51,14 @@ const CatalogItem: FC<any> = observer((): ReactElement => {
                     </Button>
                     <button
                       className="btn btn-outline-dark flex-shrink-0"
+                      onClick={async () =>
+                        await basketStore.addItem({
+                          id: catalogStore.singleCatalogItem.id,
+                          product: catalogStore.singleCatalogItem,
+                          price: catalogStore.singleCatalogItem.price,
+                          count: 1,
+                        } as BasketItemModel)
+                      }
                     >
                       Add to cart
                     </button>

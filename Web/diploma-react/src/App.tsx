@@ -5,11 +5,14 @@ import { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import HeaderComponent from './components/Header';
 import NoMatchComponent from './components/NoMatch';
-import CatalogStore from './pages/Catalog/CatalogStore';
 import CatalogItemList from './pages/Catalog';
 import CatalogItem from './pages/CatalogItem/CatalogItem';
+import CatalogStore from './stores/catalogStore';
+import { BasketStore } from './stores/basketStore';
+import BasketComponent from './pages/Basket/BasketComponent';
 
 export const catalogStore = new CatalogStore();
+export const basketStore = new BasketStore();
 
 const App: FC = observer(() => {
   return (
@@ -21,6 +24,7 @@ const App: FC = observer(() => {
             path="product"
             element={<CatalogItemList />} />
           <Route path="product/:id" element={<CatalogItem />} />
+          <Route path="basket" element={<BasketComponent />} />
         </Route>
         <Route path="*" element={<NoMatchComponent />} />
       </Routes>

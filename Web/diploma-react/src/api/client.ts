@@ -9,18 +9,22 @@ const handleResponse = async (response: Response) => {
   return response.json();
 };
 
-const apiClient = async ({ url, method }: apiClientProps) => {
+const apiClient = async ({ url, method, body }: apiClientProps) => {
   const requestOptions = {
     method,
     headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
   };
 
-  return await fetch(`${url}`, requestOptions).then(handleResponse);;
+  var a = await fetch(`${url}`, requestOptions).then(handleResponse);
+  debugger
+  return a;
 };
 
 interface apiClientProps {
   url: string
   method: string;
+  body?: any;
 }
 
 export default apiClient;

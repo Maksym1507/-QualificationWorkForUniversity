@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { CatalogItemDto } from "../../models/dtos/catalogItemsDto";
-import * as catalogItemsApi from "../../api/modules/catalogItems";
+import { CatalogItemDto } from "../models/dtos/catalogItemsDto";
+import * as catalogItemsApi from "../api/modules/catalogItems";
 
 class CatalogStore {
   singleCatalogItem: CatalogItemDto = {} as CatalogItemDto;

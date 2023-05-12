@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2021/04/svjatoi-diablo-1.jpg.webp",
+      "title": "Saint Diablo",
+      "price": 245,
+      "weight": 870,
+      "description": "Pepperoni, hunting sausages, feta, olives, sriracha, mozzarella, oregano, tomato sauce"
+    },
+    {
+      "id": 2,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/pepperoni.jpg.webp",
+      "title": "Pepperoni",
+      "price": 235,
+      "weight": 800,
+      "description": "mozzarella, mushrooms, salami, pesto sauce, tomato sauce, oregano"
+    },
+    {
+      "id": 3,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/mjasnoj-bum.jpg.webp",
+      "title": "Boom Of Meat",
+      "price": 245,
+      "weight": 850,
+      "description": "mozzarella, hunting sausages, bacon, boiled pork, blue onion, tomato sauce, parsley, oregano"
+    },
+    {
+      "id": 4,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/evropejskaja.jpg.webp",
+      "title": "European",
+      "price": 149,
+      "weight": 550,
+      "description": "mozzarella, chicken fillet, hunting sausages, champignons, parsley, ham, tomato sauce, oregano"
+    },
+    {
+      "id": 5,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/dary-morja.jpg.webp",
+      "title": "Seafood",
+      "price": 229,
+      "weight": 550,
+      "description": "mozzarella, salmon, mussels, squid, tomato, lemon, pesto, oregano, tomato sauce"
+    },
+    {
+      "id": 6,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2015/09/vechtchina-griby.jpg.webp",
+      "title": "Pizza with ham and mushrooms",
+      "price": 239,
+      "weight": 900,
+      "description": "mozzarella, ham, olives, tomatoes, parsley, mushrooms, oregano, tomato sauce"
+    },
+    {
+      "id": 7,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/tropikano-1.jpg.webp",
+      "title": "Pizza Life",
+      "price": 285,
+      "weight": 900,
+      "description": "mozzarella, pineapple, chicken fillet, oregano, parsley, tomato sauce"
+    },
+    {
+      "id": 8,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2021/04/vegetarianskaja-nju.jpg.webp",
+      "title": "Vegetarian",
+      "price": 159,
+      "weight": 550,
+      "description": "Feta, mozzarella, broccoli, olives, olives, bell peppers, tomatoes, mars onion, oregano, tomato sauce"
+    },
+    {
+      "id": 9,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/sbornaja-mjasnaja.jpg.webp",
+      "title": "Team Meat",
+      "price": 245,
+      "weight": 850,
+      "description": "mozzarella, boiled pork, salami, hunting sausages, ham, bacon, olives, oregano, tomato sauce"
+    },
+    {
+      "id": 10,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2015/09/4-syra.jpg.webp",
+      "title": "4 Cheeses",
+      "price": 210,
+      "weight": 450,
+      "description": "mozzarella, dorblu cheese, parmesan, hard cheese, bechamel sauce, oregano"
+    },
+    {
+      "id": 11,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2022/09/2-dabl-panch-169-245-grn.jpg.webp",
+      "title": "Double Punch",
+      "price": 169,
+      "weight": 500,
+      "description": "ham, salami, Parmesan cheese, hard cheese, mozzarella, Dorblu cheese, mushrooms, tomatoes, Bechamel sauce, tomato sauce"
+    },
+    {
+      "id": 12,
+      "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2021/04/4-mjasa-1.jpg.webp",
+      "title": "4 Meats",
+      "price": 240,
+      "weight": 750,
+      "description": "Veal sous-vide, salami, hunting sausages, chicken fillet, Dorblu cheese, parmesan, mozzarella, hard cheese, oregano, tomato sauce"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ const handleResponse = async (response: Response) => {
   if (!response.ok) {
     debugger;
     const message = await response.json();
-    throw Error(message.error || "Request error");
+    throw Error(message || "Request error");
   }
 
   console.log(response);

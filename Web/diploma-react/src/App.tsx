@@ -6,13 +6,18 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import HeaderComponent from './components/Header';
 import NoMatchComponent from './components/NoMatch';
 import CatalogItemList from './pages/Catalog';
-import CatalogItem from './pages/CatalogItem/CatalogItem';
+import CatalogItem from './pages/CatalogItem/CatalogItemComponent';
 import CatalogStore from './stores/catalogStore';
 import { BasketStore } from './stores/basketStore';
 import BasketComponent from './pages/Basket/BasketComponent';
+import { UserStore } from './stores/userStore';
+import SignUpComponent from './pages/SignUp/SignUpComponent';
+import LoginComponent from './pages/SignIn/LoginComponent';
+import CabinetComponent from './pages/Cabinet/CabinetComponent';
 
 export const catalogStore = new CatalogStore();
 export const basketStore = new BasketStore();
+export const userStore = new UserStore();
 
 const App: FC = observer(() => {
   return (
@@ -25,6 +30,22 @@ const App: FC = observer(() => {
             element={<CatalogItemList />} />
           <Route path="product/:id" element={<CatalogItem />} />
           <Route path="basket" element={<BasketComponent />} />
+          <Route path="register" element={<SignUpComponent />} />
+          <Route path="login" element={<LoginComponent />} />
+          {userStore.isAutificated && (
+            <>
+              <Route path="cabinet" element={<CabinetComponent />} />
+            </>
+          )}
+          :
+          {
+            <>
+              <Route
+                path="cabinet"
+                element={<Navigate replace to="/login" />}
+              />
+            </>
+          }
         </Route>
         <Route path="*" element={<NoMatchComponent />} />
       </Routes>

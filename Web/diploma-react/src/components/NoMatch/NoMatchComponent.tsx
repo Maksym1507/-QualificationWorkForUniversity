@@ -9,7 +9,7 @@ function NoMatchComponent() {
           <h2>Page not found...</h2>
 
           <p>
-            <Link to="/product">Go to catalog</Link>
+            <Link to="/product">Back to catalog</Link>
           </p>
         </div>
       </div>

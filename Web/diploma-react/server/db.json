@@ -97,27 +97,33 @@
       "description": "Veal sous-vide, salami, hunting sausages, chicken fillet, Dorblu cheese, parmesan, mozzarella, hard cheese, oregano, tomato sauce"
     }
   ],
-  "basket": [
+  "users": [
     {
+      "email": "maksym.illarionov@nure.ua",
+      "password": "$2a$10$AbZtxiQ7xhknMZOwf8XTo.V5tlzUuFP8m.nqZ7uUc97LnrYIOpUXm",
+      "confirmPassword": "1234",
+      "name": "Максим",
+      "lastName": "Илларионов",
+      "phoneNumber": "+380960101627",
       "id": 1
     },
     {
+      "email": "qwerty@gmail.com",
+      "password": "$2a$10$4hZ9ZwdNxWVGKqa/v0b3peKQLFgRwPvK7O4suqZcTaKMhXrYIvw2q",
+      "name": "12",
+      "lastName": "12",
+      "phoneNumber": "+380123445678",
+      "confirmPassword": "1234",
       "id": 2
     },
     {
+      "email": "fdfvdfs@fd.com",
+      "password": "$2a$10$XVt9gEmdh46vhUhF/oiqUuKBVu.KG/b1yHaW8w26X5hdHyyMQgyzq",
+      "name": "qw",
+      "lastName": "qw",
+      "phoneNumber": "+380987654321",
+      "confirmPassword": "1234",
       "id": 3
-    },
-    {
-      "product": {
-        "id": "default",
-        "product": {
-          "id": 1,
-          "title": "Saint Diablo",
-          "price": 245,
-          "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2021/04/svjatoi-diablo-1.jpg.webp"
-        }
-      },
-      "id": 4
     }
   ]
 }

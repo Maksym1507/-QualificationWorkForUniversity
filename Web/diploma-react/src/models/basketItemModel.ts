@@ -2,8 +2,7 @@ import { ProductToBasketModel } from "./productToBasketModel"
 
 interface BasketItemModel {
   product: ProductToBasketModel,
-  count: number,
-  price: number
+  count: number
 };
 
 export default BasketItemModel

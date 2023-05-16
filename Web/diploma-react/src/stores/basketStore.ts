@@ -27,12 +27,12 @@ export class BasketStore {
     );
     if (isFound !== -1) {
       this.items[isFound].count++;
-      this.totalSum += item.count * item.price;
+      this.totalSum += item.count * item.product.price;
     }
 
     if (isFound === -1) {
       this.items.push(item);
-      this.totalSum += item.price;
+      this.totalSum += item.product.price;
     }
 
     console.log(this.items);
@@ -45,7 +45,7 @@ export class BasketStore {
     const isFound = this.items.findIndex((x) => x.product.id === id);
 
     if (isFound !== -1) {
-      this.totalSum -= this.items[isFound].count * this.items[isFound].price;
+      this.totalSum -= this.items[isFound].count * this.items[isFound].product.price;
       this.items.splice(isFound, 1);
 
       localStorage.setItem("cart", JSON.stringify(this.items));
@@ -57,7 +57,7 @@ export class BasketStore {
     const isFound = this.items.findIndex((x) => x.product.id === id);
 
     this.items[isFound].count++;
-    this.totalSum += this.items[isFound].price;
+    this.totalSum += this.items[isFound].product.price;
 
     localStorage.setItem("cart", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
@@ -72,9 +72,16 @@ export class BasketStore {
     }
     else {
       this.items[isFound].count -= 1;
-      this.totalSum -= this.items[isFound].price;
+      this.totalSum -= this.items[isFound].product.price;
     }
 
+    localStorage.setItem("cart", JSON.stringify(this.items));
+    localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
+  }
+
+  truncateBasket() {
+    this.items = [];
+    this.totalSum = 0;
     localStorage.setItem("cart", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
   }

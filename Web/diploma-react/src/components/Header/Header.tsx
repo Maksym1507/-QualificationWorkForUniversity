@@ -46,6 +46,10 @@ const HeaderComponent: FC = observer(() => {
                     Cabinet
                   </Nav.Link>
                   <NavDropdown.Divider />
+                  <Nav.Link className="text-decoration-none text-black" as={Link} to="orders">
+                    Orders
+                  </Nav.Link>
+                  <NavDropdown.Divider />
                   <Nav.Link
                     className="text-decoration-none text-black"
                     onClick={() => {

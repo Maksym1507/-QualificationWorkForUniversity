@@ -14,10 +14,14 @@ import { UserStore } from './stores/userStore';
 import SignUpComponent from './pages/SignUp/SignUpComponent';
 import LoginComponent from './pages/SignIn/LoginComponent';
 import CabinetComponent from './pages/Cabinet/CabinetComponent';
+import { OrderStore } from './pages/Order/order.store';
+import OrderHistoryComponent from './pages/Order/OrderHistoryComponent';
+import OrderComponent from './pages/Order/OrderComponent';
 
 export const catalogStore = new CatalogStore();
 export const basketStore = new BasketStore();
 export const userStore = new UserStore();
+export const orderStore = new OrderStore();
 
 const App: FC = observer(() => {
   return (
@@ -35,6 +39,8 @@ const App: FC = observer(() => {
           {userStore.isAutificated && (
             <>
               <Route path="cabinet" element={<CabinetComponent />} />
+              <Route path="orders" element={<OrderHistoryComponent />} />
+              <Route path="do-order" element={<OrderComponent />} />
             </>
           )}
           :
@@ -42,6 +48,14 @@ const App: FC = observer(() => {
             <>
               <Route
                 path="cabinet"
+                element={<Navigate replace to="/login" />}
+              />
+              <Route
+                path="do-order"
+                element={<Navigate replace to="/login" />}
+              />
+              <Route
+                path="orders"
                 element={<Navigate replace to="/login" />}
               />
             </>

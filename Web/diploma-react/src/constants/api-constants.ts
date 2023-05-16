@@ -4,4 +4,5 @@ export const config = {
   REGISTER_URL: "http://localhost:5000/register",
   LOGIN_URL: "http://localhost:5000/login",
   USER_URL: "http://localhost:5000/users",
+  ORDER_URL: "http://localhost:5000/orders",
 };

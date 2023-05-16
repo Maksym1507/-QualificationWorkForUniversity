@@ -47,7 +47,7 @@ const CartComponent: FC = observer(() => {
                                 <div>{item.product.title}</div>
                               </td>
                               <td data-th="Price">
-                                <div>{item.price * item.count} uah</div>
+                                <div>{item.product.price * item.count} uah</div>
                               </td>
 
                               <td data-th="Quantity">
@@ -94,6 +94,12 @@ const CartComponent: FC = observer(() => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-start">
+                  <button
+                    className="btn btn-outline-dark flex-shrink-0 me-3"
+                    onClick={() => navigate("/do-order")}
+                  >
+                    Make an order
+                  </button>
                   <Button
                     onClick={() => {
                       navigate(-1);
@@ -108,7 +114,6 @@ const CartComponent: FC = observer(() => {
             <div className="text-center">Basket is empty</div>
           )}
         </>
-        {/* )} */}
       </div>
     </>
   )

@@ -10,14 +10,14 @@ import RegisterUserRequest from "../../models/requests/registerUserRequest";
 const ModalWindowComponent = () => {
   const {
     register: registerLoginWindow,
-    formState: { errors: errorsForLoginWindow },
+    formState: { errors: errorsForLoginWindow, isValid: isValidForLoginWindow },
     handleSubmit: handleSubmitLoginWindow,
     reset: resetLoginWindow,
   } = useForm({ mode: "onBlur" });
 
   const {
     register: registerSignUpWindow,
-    formState: { errors: errorsForSignUpWindow },
+    formState: { errors: errorsForSignUpWindow, isValid: isValidForSignUpWindow },
     handleSubmit: handleSubmitSignUpWindow,
     reset: resetSignUpWindow,
   } = useForm({ mode: "onBlur" });
@@ -27,7 +27,7 @@ const ModalWindowComponent = () => {
   const [value, setValue] = useState<UserTokenModel | Error>();
   const [showLoginModalWindow, setShowLoginModalWindow] = useState(false);
   const [showSignUpModalWindow, setShowSignUpModalWindow] = useState(false);
-  const [currentModal, setCurrentModal] = useState<any>(null);
+  const [currentModalWindow, setCurrentModalWindow] = useState<any>(null);
   const [loginformData, setLoginformData] = useState<LoginUserRequest>({} as LoginUserRequest);
   const [signUpformData, setSignUpformData] = useState({
   } as RegisterUserRequest)
@@ -45,32 +45,32 @@ const ModalWindowComponent = () => {
 
   const handleCloseLoginModalWindow = () => {
     setShowLoginModalWindow(false);
-    setCurrentModal(null);
+    setCurrentModalWindow(null);
     resetLoginWindow();
   };
 
   const handleCloseSignUpModalWindow = () => {
     setShowSignUpModalWindow(false);
-    setCurrentModal(null);
+    setCurrentModalWindow(null);
     resetSignUpWindow();
   };
 
   const handleOpenLoginModalWindow = () => {
     setShowLoginModalWindow(true);
-    setCurrentModal("loginModalWindow");
+    setCurrentModalWindow("loginModalWindow");
   };
 
   const handleOpenSignUpModalWindow = () => {
     setShowSignUpModalWindow(true);
-    setCurrentModal("signUpModalWindow");
+    setCurrentModalWindow("signUpModalWindow");
   };
 
   const handleLinkClick = (e: any) => {
     e.preventDefault();
-    if (currentModal === "loginModalWindow") {
+    if (currentModalWindow === "loginModalWindow") {
       handleCloseLoginModalWindow();
       handleOpenSignUpModalWindow();
-    } else if (currentModal === "signUpModalWindow") {
+    } else if (currentModalWindow === "signUpModalWindow") {
       handleCloseSignUpModalWindow();
       handleOpenLoginModalWindow();
     }
@@ -173,6 +173,7 @@ const ModalWindowComponent = () => {
                 style={{ width: "7rem" }}
                 variant="primary"
                 type="submit"
+                disabled={!isValidForLoginWindow}
               >
                 Sign in
               </Button>
@@ -209,7 +210,8 @@ const ModalWindowComponent = () => {
                 type="text"
                 placeholder="Enter name"
                 {...registerSignUpWindow("name", {
-                  required: "Name can not be empty"
+                  required: "Name can not be empty",
+                  minLength: { value: 3, message: "Min 3 symbols" },
                 })}
                 onChange={(e: any) => handleChangeSignUpFormData(e)}
               />
@@ -224,13 +226,14 @@ const ModalWindowComponent = () => {
 
             <Form.Group controlId="formSignUpEmail">
               <Form.Label className="d-flex">
-                LastName
+                Last name
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter lastName"
+                placeholder="Enter last name"
                 {...registerSignUpWindow("lastName", {
-                  required: "LastName can not be empty"
+                  required: "Last name can not be empty",
+                  minLength: { value: 3, message: "Min 3 symbols" },
                 })}
                 onChange={(e: any) => handleChangeSignUpFormData(e)}
               />
@@ -245,7 +248,7 @@ const ModalWindowComponent = () => {
 
             <Form.Group controlId="formSignUpEmail">
               <Form.Label className="d-flex">
-                PhoneNumber
+                Phone number
               </Form.Label>
               <Form.Control
                 type="tel"
@@ -343,6 +346,7 @@ const ModalWindowComponent = () => {
                 style={{ width: "7rem" }}
                 variant="primary"
                 type="submit"
+                disabled={!isValidForSignUpWindow}
               >
                 Sign up
               </Button>

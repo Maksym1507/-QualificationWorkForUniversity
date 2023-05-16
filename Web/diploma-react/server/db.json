@@ -106,24 +106,45 @@
       "lastName": "Илларионов",
       "phoneNumber": "+380960101627",
       "id": 1
-    },
+    }
+  ],
+  "orders": [
     {
-      "email": "qwerty@gmail.com",
-      "password": "$2a$10$4hZ9ZwdNxWVGKqa/v0b3peKQLFgRwPvK7O4suqZcTaKMhXrYIvw2q",
-      "name": "12",
-      "lastName": "12",
-      "phoneNumber": "+380123445678",
-      "confirmPassword": "1234",
-      "id": 2
-    },
-    {
-      "email": "fdfvdfs@fd.com",
-      "password": "$2a$10$XVt9gEmdh46vhUhF/oiqUuKBVu.KG/b1yHaW8w26X5hdHyyMQgyzq",
-      "name": "qw",
-      "lastName": "qw",
-      "phoneNumber": "+380987654321",
-      "confirmPassword": "1234",
-      "id": 3
+      "userId": 1,
+      "name": "Максим",
+      "lastName": "Илларионов",
+      "phoneNumber": "+380960101627",
+      "email": "maksym.illarionov@nure.ua",
+      "country": "Украина",
+      "region": "Киевская",
+      "city": "Киев",
+      "address": "cxvbnmncvxefwfwef",
+      "index": "61047",
+      "orderProducts": [
+        {
+          "id": 2,
+          "product": {
+            "id": 2,
+            "title": "Pepperoni",
+            "price": 235,
+            "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2014/08/pepperoni.jpg.webp"
+          },
+          "price": 235,
+          "count": 1
+        },
+        {
+          "id": 1,
+          "product": {
+            "id": 1,
+            "title": "Saint Diablo",
+            "price": 245,
+            "pictureUrl": "https://roll-club.kh.ua/wp-content/uploads/2021/04/svjatoi-diablo-1.jpg.webp"
+          },
+          "price": 245,
+          "count": 1
+        }
+      ],
+      "id": 1
     }
   ]
 }

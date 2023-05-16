@@ -3,18 +3,15 @@ import apiClient from "../client";
 
 export const getCatalogItemById = (id: string) =>
   apiClient({
-    url: `${config.PRODUCT_URL}/${id}`,
-    method: "GET",
+    url: config.PRODUCT_URL,
+    path: `itemById/${id}`,
+    method: "POST",
   });
 
-export const getCatalogItemsWithPagination = (pageIndex: number, pageSize: number) =>
+export const getCatalogItems = (pageIndex: number, pageSize: number) =>
   apiClient({
-    url: `${config.PRODUCT_URL}?_page=${pageIndex}&_limit=${pageSize}`,
-    method: "GET",
-  });
-
-  export const getCatalogItems = () =>
-  apiClient({
-    url: `${config.PRODUCT_URL}`,
-    method: "GET",
+    url: config.PRODUCT_URL,
+    path: `items`,
+    method: "POST",
+    body: { pageIndex, pageSize }
   });

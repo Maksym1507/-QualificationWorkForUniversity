@@ -32,7 +32,7 @@ const OrderHistoryComponent: FC = observer(() => {
                             Order №{order.id}
                           </div>
                           <div className="col-sm-5 text-center">
-                            <p className="mb-0">Order price: {orderStore.getTotalCountOfBasketItems()} uah</p>
+                            <p className="mb-0">Order price: {orderStore.getTotalCountOfBasketItems(order.orderProducts)} uah</p>
                           </div>
                           <div className="col-sm-3 ms-3 text-end">
                             <img
@@ -130,7 +130,7 @@ const OrderHistoryComponent: FC = observer(() => {
                                       <h5 className="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
                                         Total:{" "}
                                         <span className="h3 mb-0 ms-2">
-                                          {orderStore.getTotalCountOfBasketItems()} uah
+                                          {orderStore.getTotalCountOfBasketItems(order.orderProducts)} uah
                                         </span>
                                       </h5>
                                     </div>

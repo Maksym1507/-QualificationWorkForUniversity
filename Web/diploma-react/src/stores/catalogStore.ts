@@ -7,29 +7,24 @@ class CatalogStore {
   currentPage = 1;
   totalPages = 0;
   pageSize = 6;
-  filter: {
-    "Type": number | null;
-  };
+
   items: CatalogItemDto[] = [];
   isLoading = false;
 
   constructor() {
     makeAutoObservable(this);
-    this.filter = null!;
     runInAction(this.prefetchData);
   }
 
   prefetchData = async () => {
     try {
       this.isLoading = true;
-      const pageIndex = this.currentPage;
-      const res = await catalogItemsApi.getCatalogItemsWithPagination(pageIndex, this.pageSize);
-      this.items = res;
+      const pageIndex = this.currentPage - 1;
+      const res = await catalogItemsApi.getCatalogItems(pageIndex, this.pageSize);
+      this.items = res.data;
       console.log(res);
 
-      const totalProducts = await catalogItemsApi.getCatalogItems();
-
-      this.totalPages = Math.ceil(totalProducts.length / this.pageSize);
+      this.totalPages = Math.ceil(res.count / this.pageSize);
     } catch (e) {
       if (e instanceof Error) {
         console.error(e.message);

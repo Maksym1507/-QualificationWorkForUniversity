@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QualificationWorkForUniversity", "QualificationWorkForUniversity\QualificationWorkForUniversity.csproj", "{696BC64F-ED86-4037-93CA-A3172BD672B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E3A50CE9-DBF7-40E7-9FEE-AD249027A080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infractructure", "Infractructure\Infractructure\Infractructure.csproj", "{037E31A5-EE47-42DF-BCDF-C2991A362CD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{B466C8E6-56FF-405B-8890-7A5F27F80DD2}"
+	ProjectSection(SolutionItems) = preProject
+		settings.ruleset = settings.ruleset
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{696BC64F-ED86-4037-93CA-A3172BD672B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696BC64F-ED86-4037-93CA-A3172BD672B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696BC64F-ED86-4037-93CA-A3172BD672B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696BC64F-ED86-4037-93CA-A3172BD672B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{037E31A5-EE47-42DF-BCDF-C2991A362CD8} = {E3A50CE9-DBF7-40E7-9FEE-AD249027A080}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD4894F2-FECA-4EDF-B0AE-6C4CEB5D758A}
+	EndGlobalSection
+EndGlobal

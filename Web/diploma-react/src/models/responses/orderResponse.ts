@@ -11,7 +11,7 @@ interface OrderResponse {
   region: string;
   city: string;
   address: string;
-  index: string;
+  postcode: string;
   createdAt: string;
 }
 

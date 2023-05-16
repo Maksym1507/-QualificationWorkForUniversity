@@ -14,7 +14,7 @@ import { UserStore } from './stores/userStore';
 import SignUpComponent from './pages/SignUp/SignUpComponent';
 import LoginComponent from './pages/SignIn/LoginComponent';
 import CabinetComponent from './pages/Cabinet/CabinetComponent';
-import { OrderStore } from './pages/Order/order.store';
+import { OrderStore } from './stores/order.store';
 import OrderHistoryComponent from './pages/Order/OrderHistoryComponent';
 import OrderComponent from './pages/Order/OrderComponent';
 

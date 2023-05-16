@@ -7,6 +7,7 @@ export const userLogin = (data: LoginUserRequest) =>
   apiClient({
     url: `${config.LOGIN_URL}`,
     method: "POST",
+    path: "",
     body: data
   });
 
@@ -14,5 +15,6 @@ export const userLogin = (data: LoginUserRequest) =>
   apiClient({
     url: `${config.REGISTER_URL}`,
     method: "POST",
+    path: "",
     body: data
   });

@@ -1,8 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { userStore } from "../../App";
-import OrderModel from "../../models/orderModel";
-import OrderResponse from "../../models/responses/orderResponse";
-import * as orderApi from "../../api/modules/order";
+import { userStore } from "../App";
+import OrderModel from "../models/orderModel";
+import OrderResponse from "../models/responses/orderResponse";
+import * as orderApi from "../api/modules/order";
+import OrderDetailsResponse from "../models/responses/orderDetailsResponse";
 
 export class OrderStore {
   orders: OrderResponse[] = [];
@@ -32,7 +33,7 @@ export class OrderStore {
     return doOrderResponse;
   }
 
-  getTotalCountOfBasketItems() {
-    return this.orders.map(basketItem => basketItem.orderProducts.reduce((ac, item) => ac + item.count * item.product.price, 0));
+  getTotalCountOfBasketItems(orderDetails: OrderDetailsResponse[]) {
+    return orderDetails.reduce((ac, item) => ac + item.count * item.product.price, 0);
   }
 }

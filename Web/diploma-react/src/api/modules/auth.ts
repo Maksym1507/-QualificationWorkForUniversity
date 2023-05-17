@@ -5,16 +5,16 @@ import apiClient from "../client";
 
 export const userLogin = (data: LoginUserRequest) =>
   apiClient({
-    url: `${config.LOGIN_URL}`,
+    url: `${config.AUTH_URL}`,
     method: "POST",
-    path: "",
+    path: "login",
     body: data
   });
 
-  export const userRegister = (data: RegisterUserRequest) =>
+export const userRegister = (data: RegisterUserRequest) =>
   apiClient({
-    url: `${config.REGISTER_URL}`,
+    url: `${config.AUTH_URL}`,
     method: "POST",
-    path: "",
+    path: "register",
     body: data
   });

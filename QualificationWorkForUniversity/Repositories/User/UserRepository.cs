@@ -15,11 +15,6 @@ namespace QualificationWorkForUniversity.Repositories.User
             _logger = logger;
         }
 
-        public async Task<UserEntity?> GetByIdAsync(string id)
-        {
-            return await _dbContext.Users.FirstOrDefaultAsync(f => f.Id == id);
-        }
-
         public async Task<string?> AddAsync(UserEntity user)
         {
             var item = await _dbContext.AddAsync(user);
@@ -27,6 +22,21 @@ namespace QualificationWorkForUniversity.Repositories.User
             await _dbContext.SaveChangesAsync();
 
             return item.Entity.Id;
+        }
+
+        public async Task<UserEntity?> GetByIdAsync(string id)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(f => f.Id == id);
+        }
+
+        public async Task<UserEntity?> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(a => a.Email == email);
+        }
+
+        public async Task<UserEntity?> GetByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(a => a.Email == email && a.Password == password);
         }
 
         public async Task<bool> UpdateAsync(UserEntity item)

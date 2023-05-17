@@ -7,12 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QualificationWorkForUnivers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E3A50CE9-DBF7-40E7-9FEE-AD249027A080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infractructure", "Infractructure\Infractructure\Infractructure.csproj", "{037E31A5-EE47-42DF-BCDF-C2991A362CD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infractructure", "Infractructure\Infractructure\Infractructure.csproj", "{037E31A5-EE47-42DF-BCDF-C2991A362CD8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "SolutionsItems", "{B466C8E6-56FF-405B-8890-7A5F27F80DD2}"
 	ProjectSection(SolutionItems) = preProject
 		settings.ruleset = settings.ruleset
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +30,10 @@ Global
 		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037E31A5-EE47-42DF-BCDF-C2991A362CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

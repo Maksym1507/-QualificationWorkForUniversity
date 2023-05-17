@@ -1,8 +1,7 @@
 export const config = {
-  PRODUCT_URL: "https://localhost:7172/api/v1/catalogbff/",
+  PRODUCT_URL: "http://localhost:5066/api/v1/catalogbff/",
+  USER_URL: "http://localhost:5066/api/v1/userbff/",
   BASKET_URL: "http://localhost:5000/basket",
-  REGISTER_URL: "http://localhost:5000/register",
-  LOGIN_URL: "http://localhost:5000/login",
-  USER_URL: "http://localhost:5000/users",
+  AUTH_URL: "http://localhost:5066/api/v1/auth/",
   ORDER_URL: "http://localhost:5000/orders",
 };

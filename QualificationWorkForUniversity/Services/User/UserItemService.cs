@@ -75,5 +75,15 @@ namespace QualificationWorkForUniversity.Services.User
                 return isDeleted;
             });
         }
+
+        public async Task<UserEntity?> GetUserByEmailAsync(string email)
+        {
+            return await _userRepository.GetByEmailAsync(email);
+        }
+
+        public async Task<UserEntity?> GetUserByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _userRepository.GetByEmailAndPasswordAsync(email, password);
+        }
     }
 }

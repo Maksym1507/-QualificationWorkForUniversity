@@ -1,5 +1,6 @@
 using QualificationWorkForUniversity.Repositories.User;
 using QualificationWorkForUniversity.Repositories.User.Abstractions;
+using QualificationWorkForUniversity.Services.Auth;
 using QualificationWorkForUniversity.Services.User;
 using QualificationWorkForUniversity.Services.User.Abstractions;
 
@@ -31,6 +32,8 @@ namespace QualificationWorkForUniversity
             builder.Services.AddTransient<IUserService, UserService>();
             builder.Services.AddTransient<IUserItemService, UserItemService>();
             builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IAuthService, AuthService>();
+            builder.Services.AddTransient<ITokenService, TokenService>();
             builder.Services.AddTransient<IOrderService, OrderService>();
             builder.Services.AddTransient<IOrderRepository, OrderRepository>();
             builder.Services.AddTransient<IOrderItemService, OrderItemService>();

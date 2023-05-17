@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             _userService = userService;
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         [ProducesResponseType(typeof(UserResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetById(string id)
         {

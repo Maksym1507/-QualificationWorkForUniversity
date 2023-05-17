@@ -28,7 +28,7 @@ export const LoginComponent: FC = observer(() => {
         userStore.user = (value as UserTokenModel).user;
         localStorage.setItem("user", JSON.stringify(userStore.user));
         userStore.isAutificated = true;
-        navigate("/product");
+        navigate("/cabinet");
       }
     }
 

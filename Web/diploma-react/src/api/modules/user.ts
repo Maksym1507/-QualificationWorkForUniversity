@@ -3,7 +3,7 @@ import apiClient from "../client";
 
 export const getUserById = (id: string) =>
   apiClient({
-    url: `${config.USER_URL}/${id}`,
-    path: "",
-    method: "GET",
+    url: `${config.USER_URL}`,
+    path: `getbyid/${id}`,
+    method: "POST",
   });

@@ -1,12 +1,15 @@
 import { observer } from "mobx-react-lite";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterUserRequest from "../../models/requests/registerUserRequest";
 import { userStore } from "../../App";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import ErrorResponse from "../../models/responses/errorResponse";
+import SignUpResponse from "../../models/responses/signUpResponse";
 
 export const SignUpComponent: FC = observer(() => {
+  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse | ErrorResponse>();
   const [formData, setFormData] = useState({
   } as RegisterUserRequest)
 
@@ -18,6 +21,15 @@ export const SignUpComponent: FC = observer(() => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (signUpResponse) {
+      if ((signUpResponse as SignUpResponse).succesedMessage) {
+        alert(`${(signUpResponse as SignUpResponse).succesedMessage}`);
+        navigate("/login");
+      }
+    }
+  }, [signUpResponse]);
+
   function handleChangeSignUpFormData(e: any) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -25,7 +37,7 @@ export const SignUpComponent: FC = observer(() => {
   async function onSubmitForSignUp() {
     try {
       debugger;
-      setFormData(await userStore.userRegister(formData));
+      setSignUpResponse(await userStore.userRegister(formData));
     } catch (error: any) {
       alert(`${error.message}. Try again`);
     }

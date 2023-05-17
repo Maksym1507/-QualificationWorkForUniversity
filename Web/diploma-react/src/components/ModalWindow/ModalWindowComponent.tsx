@@ -6,6 +6,8 @@ import { userStore } from "../../App";
 import { useForm } from "react-hook-form";
 import LoginUserRequest from "../../models/requests/loginUserRequest";
 import RegisterUserRequest from "../../models/requests/registerUserRequest";
+import ErrorResponse from "../../models/responses/errorResponse";
+import SignUpResponse from "../../models/responses/signUpResponse";
 
 const ModalWindowComponent = () => {
   const {
@@ -24,7 +26,8 @@ const ModalWindowComponent = () => {
 
   const navigate = useNavigate();
 
-  const [value, setValue] = useState<UserTokenModel | Error>();
+  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse | ErrorResponse>();
+  const [loginResponse, setLoginResponse] = useState<UserTokenModel | Error>();
   const [showLoginModalWindow, setShowLoginModalWindow] = useState(false);
   const [showSignUpModalWindow, setShowSignUpModalWindow] = useState(false);
   const [currentModalWindow, setCurrentModalWindow] = useState<any>(null);
@@ -33,15 +36,25 @@ const ModalWindowComponent = () => {
   } as RegisterUserRequest)
 
   useEffect(() => {
-    if (value) {
-      if ((value as UserTokenModel).user) {
-        userStore.user = (value as UserTokenModel).user;
+    if (signUpResponse) {
+      if ((signUpResponse as SignUpResponse).succesedMessage) {
+        alert(`${(signUpResponse as SignUpResponse).succesedMessage}`);
+        setShowSignUpModalWindow(false);
+        navigate("/login");
+      }
+    }
+  }, [signUpResponse]);
+
+  useEffect(() => {
+    if (loginResponse) {
+      if ((loginResponse as UserTokenModel).user) {
+        userStore.user = (loginResponse as UserTokenModel).user;
         localStorage.setItem("user", JSON.stringify(userStore.user));
         userStore.isAutificated = true;
         navigate("/cabinet");
       }
     }
-  }, [value, navigate]);
+  }, [loginResponse, navigate]);
 
   const handleCloseLoginModalWindow = () => {
     setShowLoginModalWindow(false);
@@ -82,7 +95,7 @@ const ModalWindowComponent = () => {
 
   async function onSubmitForLoginModalWindow() {
     try {
-      setValue(await userStore.userLogin(loginformData.email, loginformData.password));
+      setLoginResponse(await userStore.userLogin(loginformData.email, loginformData.password));
     } catch (error: any) {
       alert(`${error.message}. Try again`);
     }
@@ -95,7 +108,7 @@ const ModalWindowComponent = () => {
   async function onSubmitForSignUpModalWindow() {
     try {
       debugger;
-      setValue(await userStore.userRegister(signUpformData));
+      setSignUpResponse(await userStore.userRegister(signUpformData));
     } catch (error: any) {
       alert(`${error.message}. Try again`);
     }

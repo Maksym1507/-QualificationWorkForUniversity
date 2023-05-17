@@ -4,6 +4,8 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import { basketStore, userStore } from "../../App";
 import ModalWindowComponent from "../ModalWindow/ModalWindowComponent";
+import basketImg from "../../images/shopping-cart.png";
+import userProfileImg from "../../images/user-profile.png";
 
 const HeaderComponent: FC = observer(() => {
   return (
@@ -25,9 +27,9 @@ const HeaderComponent: FC = observer(() => {
               </Nav.Link>
               <Nav.Link as={Link} to="/basket">
                 <img
-                  src="https://cdn-icons-png.flaticon.com/512/118/118089.png"
-                  alt=""
-                  width={20}
+                  src={basketImg}
+                  alt="basket"
+                  width={22}
                   className="cursor-pointer"
                 />
                 <span className="ms-1">{basketStore.getTotalCountOfBasketItems()}</span>
@@ -37,13 +39,14 @@ const HeaderComponent: FC = observer(() => {
               <Nav
               >
                 <NavDropdown className="my-nav-dropdown" align="end" title={<img
-                  src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+                  src={userProfileImg}
                   alt=""
-                  width={25}
-                  className="cursor-pointer no-caret-toggle"
+                  width={32}
+                  className="cursor-pointer"
                 />}>
                   <Nav.Link className="text-decoration-none text-black" as={Link} to="/cabinet">
                     Cabinet
+                    <img src="" alt="" />
                   </Nav.Link>
                   <NavDropdown.Divider />
                   <Nav.Link className="text-decoration-none text-black" as={Link} to="orders">

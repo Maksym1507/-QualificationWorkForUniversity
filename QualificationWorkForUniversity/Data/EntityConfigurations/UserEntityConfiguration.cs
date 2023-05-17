@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using QualificationWorkForUniversity.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace QualificationWorkForUniversity.Data.EntityConfiguration
 {

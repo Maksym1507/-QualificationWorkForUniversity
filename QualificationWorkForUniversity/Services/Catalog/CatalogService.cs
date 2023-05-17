@@ -1,6 +1,8 @@
 ﻿using QualificationWorkForUniversity.Models.Dtos.Catalog;
+using QualificationWorkForUniversity.Repositories.Catalog.Abstractions;
+using QualificationWorkForUniversity.Services.Catalog.Abstractions;
 
-namespace QualificationWorkForUniversity.Services
+namespace QualificationWorkForUniversity.Services.Catalog
 {
     public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogService
     {

@@ -1,4 +1,7 @@
-﻿namespace QualificationWorkForUniversity.Services;
+﻿using QualificationWorkForUniversity.Repositories.Catalog.Abstractions;
+using QualificationWorkForUniversity.Services.Catalog.Abstractions;
+
+namespace QualificationWorkForUniversity.Services.Catalog;
 
 public class CatalogItemService : BaseDataService<ApplicationDbContext>, ICatalogItemService
 {

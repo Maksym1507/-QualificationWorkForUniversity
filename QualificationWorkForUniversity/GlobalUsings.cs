@@ -1,4 +1,5 @@
 ﻿global using System.Net;
+global using System.ComponentModel.DataAnnotations;
 global using AutoMapper;
 global using Microsoft.Extensions.Options;
 global using QualificationWorkForUniversity.Configurations;
@@ -15,5 +16,12 @@ global using QualificationWorkForUniversity.Data;
 global using QualificationWorkForUniversity.Repositories.Abstractions;
 global using Infrastructure.Filters;
 global using Infrastructure.Services;
+global using QualificationWorkForUniversity.Models.Requests;
+global using QualificationWorkForUniversity.Models.Responses;
+global using QualificationWorkForUniversity.Models;
 global using QualificationWorkForUniversity.Repositories;
+global using QualificationWorkForUniversity.Repositories.Catalog;
+global using QualificationWorkForUniversity.Repositories.Catalog.Abstractions;
 global using QualificationWorkForUniversity.Services;
+global using QualificationWorkForUniversity.Services.Catalog;
+global using QualificationWorkForUniversity.Services.Catalog.Abstractions;

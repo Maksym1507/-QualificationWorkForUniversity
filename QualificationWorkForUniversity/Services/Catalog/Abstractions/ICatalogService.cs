@@ -1,6 +1,6 @@
 ﻿using QualificationWorkForUniversity.Models.Dtos.Catalog;
 
-namespace QualificationWorkForUniversity.Services.Abstractions
+namespace QualificationWorkForUniversity.Services.Catalog.Abstractions
 {
     public interface ICatalogService
     {

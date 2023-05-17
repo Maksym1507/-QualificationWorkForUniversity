@@ -1,4 +1,4 @@
-﻿namespace QualificationWorkForUniversity.Repositories.Abstractions
+﻿namespace QualificationWorkForUniversity.Repositories.Catalog.Abstractions
 {
     public interface ICatalogItemRepository
     {

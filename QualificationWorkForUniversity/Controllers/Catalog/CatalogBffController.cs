@@ -1,6 +1,6 @@
 using QualificationWorkForUniversity.Models.Dtos.Catalog;
 
-namespace QualificationWorkForUniversity.Controllers
+namespace QualificationWorkForUniversity.Controllers.Catalog
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]

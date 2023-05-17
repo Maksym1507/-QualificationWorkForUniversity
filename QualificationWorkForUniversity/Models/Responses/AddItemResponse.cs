@@ -1,4 +1,4 @@
-﻿namespace QualificationWorkForUniversity.Models.Responses.Catalog
+﻿namespace QualificationWorkForUniversity.Models.Responses
 {
     public class AddItemResponse<T>
     {

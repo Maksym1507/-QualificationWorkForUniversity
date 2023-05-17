@@ -1,4 +1,4 @@
-﻿namespace QualificationWorkForUniversity.Repositories
+﻿namespace QualificationWorkForUniversity.Repositories.Catalog
 {
     public class CatalogItemRepository : ICatalogItemRepository
     {

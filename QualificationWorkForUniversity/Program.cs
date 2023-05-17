@@ -1,3 +1,8 @@
+using QualificationWorkForUniversity.Repositories.User;
+using QualificationWorkForUniversity.Repositories.User.Abstractions;
+using QualificationWorkForUniversity.Services.User;
+using QualificationWorkForUniversity.Services.User.Abstractions;
+
 namespace QualificationWorkForUniversity
 {
     public class Program
@@ -23,6 +28,13 @@ namespace QualificationWorkForUniversity
             builder.Services.AddTransient<ICatalogService, CatalogService>();
             builder.Services.AddTransient<ICatalogItemRepository, CatalogItemRepository>();
             builder.Services.AddTransient<ICatalogItemService, CatalogItemService>();
+            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddTransient<IUserItemService, UserItemService>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IOrderService, OrderService>();
+            builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+            builder.Services.AddTransient<IOrderItemService, OrderItemService>();
+            builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
 
             builder.Services.AddDbContextFactory<ApplicationDbContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();

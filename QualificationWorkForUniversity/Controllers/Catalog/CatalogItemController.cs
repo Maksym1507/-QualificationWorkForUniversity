@@ -1,4 +1,6 @@
-﻿namespace QualificationWorkForUniversity.Controllers
+﻿using QualificationWorkForUniversity.Services.Catalog.Abstractions;
+
+namespace QualificationWorkForUniversity.Controllers.Catalog
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]

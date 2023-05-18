@@ -10,8 +10,8 @@ interface OrderModel {
   region: string;
   city: string;
   address: string;
-  index: string;
-  orderProducts: BasketItemModel[]
+  postcode: string;
+  basketItems: BasketItemModel[]
 };
 
 export default OrderModel;

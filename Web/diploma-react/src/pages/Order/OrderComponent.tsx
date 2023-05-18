@@ -15,8 +15,8 @@ const OrderComponent: FC = observer(() => {
       if ((orderMessage as OrderResponse)) {
         basketStore.truncateBasket();
         debugger;
-        console.log(orderMessage.id);
-        alert(`Order was confirmed with id = ${orderMessage.id}`);
+        console.log(orderMessage);
+        alert(`Order was confirmed with id = ${orderMessage}`);
       }
       else {
         alert("Failed to order");
@@ -39,7 +39,7 @@ const OrderComponent: FC = observer(() => {
     region: "",
     city: "",
     address: "",
-    index: "",
+    postcode: "",
   } as OrderModel);
 
   function handleChange(e: any) {
@@ -61,8 +61,8 @@ const OrderComponent: FC = observer(() => {
             region: formData.region,
             city: formData.city,
             address: formData.address,
-            index: formData.index,
-            orderProducts: basketStore.items
+            postcode: formData.postcode,
+            basketItems: basketStore.items
           } as OrderModel));
     })();
   };
@@ -73,9 +73,9 @@ const OrderComponent: FC = observer(() => {
         <div className="row mx-2">
           <div className="pt-2 mb-2 col-md-5 col-lg-4 order-md-last bg-white rounded border border-dark">
             <h4 className="d-flex justify-content-between align-items-center mb-3 ">
-              <span>Your cart</span>
+              <span>Your basket</span>
               <span className="badge bg-dark rounded-pill">
-                {basketStore.items!.length}
+                {basketStore.getTotalCountOfBasketItems()}
               </span>
             </h4>
             <div className="container">
@@ -340,30 +340,30 @@ const OrderComponent: FC = observer(() => {
                 </div>
 
                 <div className="col-md-4">
-                  <label htmlFor="index" className="form-label">
-                    Index
+                  <label htmlFor="postcode" className="form-label">
+                    Postcode
                   </label>
                   <input
-                    {...register("index", {
-                      required: "Index can not be empty",
+                    {...register("postcode", {
+                      required: "Postcode can not be empty",
                       minLength: {
                         value: 5,
-                        message: "Index should contains 5 symbols",
+                        message: "Postcode should contains 5 symbols",
                       },
                       maxLength: {
                         value: 5,
-                        message: "Index should contains 5 symbols",
+                        message: "Postcode should contains 5 symbols",
                       },
                     })}
                     type="number"
                     className="form-control"
-                    placeholder="Enter index"
+                    placeholder="Enter postcode"
                     onChange={(e) => handleChange(e)}
                   />
                   <div style={{ height: 20 }}>
-                    {errors?.index && (
+                    {errors?.postcode && (
                       <p className="text-danger">
-                        {errors?.index?.message?.toString()}
+                        {errors?.postcode?.message?.toString()}
                       </p>
                     )}
                   </div>

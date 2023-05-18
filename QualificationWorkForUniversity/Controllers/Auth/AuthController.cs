@@ -1,6 +1,6 @@
 ﻿using QualificationWorkForUniversity.Models.Dtos.User;
 
-namespace QualificationWorkForUniversity.Controllers
+namespace QualificationWorkForUniversity.Controllers.Auth
 {
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]

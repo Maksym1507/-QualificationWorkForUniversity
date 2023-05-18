@@ -17,7 +17,7 @@ const OrderHistoryComponent: FC = observer(() => {
           </div>
         ) : (
           <>
-            <h2>My orders</h2>
+            <h2>Order List</h2>
             {orderStore.orders.length ? (
               (orderStore.orders).slice()
                 .sort((a, b) => {

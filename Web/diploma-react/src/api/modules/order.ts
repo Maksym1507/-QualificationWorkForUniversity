@@ -2,17 +2,17 @@ import { config } from "../../constants/api-constants";
 import OrderModel from "../../models/orderModel";
 import apiClient from "../client";
 
-export const getOrderByUserId = (userId: string) =>
+export const getOrdersByUserId = (userId: string) =>
   apiClient({
-    url: `${config.ORDER_URL}?userId=${userId}`,
-    path: "",
-    method: "GET"
+    url: `${config.ORDER_URL}`,
+    path: `getordersbyuserid?userId=${userId}`,
+    method: "POST"
   });
 
 export const doOrder = (order: OrderModel) =>
   apiClient({
     url: config.ORDER_URL,
-    path: "",
+    path: "doorder",
     method: "POST",
     body: order
   });

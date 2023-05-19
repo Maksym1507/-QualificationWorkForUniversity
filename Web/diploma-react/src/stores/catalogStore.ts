@@ -22,8 +22,6 @@ class CatalogStore {
       const pageIndex = this.currentPage - 1;
       const res = await catalogItemsApi.getCatalogItems(pageIndex, this.pageSize);
       this.items = res.data;
-      console.log(res);
-
       this.totalPages = Math.ceil(res.count / this.pageSize);
     } catch (e) {
       if (e instanceof Error) {

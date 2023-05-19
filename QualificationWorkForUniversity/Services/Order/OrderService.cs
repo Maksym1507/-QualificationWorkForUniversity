@@ -43,7 +43,7 @@
             if (orders!.Count() == 0)
             {
                 _loggerService.LogWarning($"Not founded orders with user id = {userId}");
-                return null!;
+                return new List<OrderResponse>();
             }
 
             return orders!.Select(s => _mapper.Map<OrderResponse>(s));

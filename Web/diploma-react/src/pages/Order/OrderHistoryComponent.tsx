@@ -1,9 +1,15 @@
 import { observer } from "mobx-react-lite";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Accordion, Spinner } from "react-bootstrap";
 import { orderStore } from "../../App";
 
 const OrderHistoryComponent: FC = observer(() => {
+  useEffect(() => {
+    (async () => {
+      await orderStore.prefetchData();
+    })();
+  }, []);
+
   return (
     <>
       <div className="mb-3 text-center">

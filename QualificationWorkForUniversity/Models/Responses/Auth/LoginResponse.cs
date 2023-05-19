@@ -2,7 +2,7 @@
 
 namespace QualificationWorkForUniversity.Models.Responses.Auth
 {
-    public class AuthResponse
+    public class LoginResponse
     {
         public string? AccessToken { get; set; }
 

@@ -11,7 +11,9 @@ namespace Catalog.Host.Mapping
                 .ForMember("PictureUrl", opt
                     => opt.MapFrom<CatalogItemPictureResolver, string>(c => c.PictureFileName));
 
-            CreateMap<CatalogEntity, ProductToBasketModel>();
+            CreateMap<CatalogEntity, ProductToBasketModel>()
+                .ForMember("PictureUrl", opt
+                    => opt.MapFrom<CatalogItemPictureResolver, string>(c => c.PictureFileName));
         }
     }
 }

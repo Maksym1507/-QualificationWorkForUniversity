@@ -31,13 +31,14 @@ namespace QualificationWorkForUniversity.Controllers.Auth
                 return BadRequest(new { ex.Message });
             }
 
-            return Ok(new { SuccesedMessage = message });
+            return Ok(new SignUpResponse { SuccesedMessage = message });
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(LoginResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Login(LoginRequest request)
         {
-            AuthResponse authResponse;
+            LoginResponse authResponse;
 
             try
             {

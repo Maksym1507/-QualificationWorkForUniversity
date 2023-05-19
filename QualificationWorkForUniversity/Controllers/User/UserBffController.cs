@@ -1,5 +1,4 @@
-﻿using QualificationWorkForUniversity.Models.Responses.User;
-using QualificationWorkForUniversity.Services.User.Abstractions;
+﻿using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -18,6 +17,7 @@ namespace WebApi.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [HttpPost("{id}")]
         [ProducesResponseType(typeof(UserResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetById(string id)

@@ -31,7 +31,7 @@ namespace QualificationWorkForUniversity.Services.Auth
             if (user != null)
             {
                 _loggerService.LogError("Failed add user to db");
-                return "Account has already existed";
+                throw new Exception("Account has already existed");
             }
 
             var result = await _userItemService.AddAsync(request);
@@ -46,9 +46,9 @@ namespace QualificationWorkForUniversity.Services.Auth
             return "You are sign up";
         }
 
-        public async Task<AuthResponse> LoginUserAsync(LoginRequest request)
+        public async Task<LoginResponse> LoginUserAsync(LoginRequest request)
         {
-            AuthResponse authResponse = null!;
+            LoginResponse authResponse = null!;
 
             var accessToken = await _tokenService.GetToken(request.Email!, request.Password!);
 
@@ -56,7 +56,7 @@ namespace QualificationWorkForUniversity.Services.Auth
 
             if (account != null)
             {
-                authResponse = new AuthResponse()
+                authResponse = new LoginResponse()
                 {
                     AccessToken = accessToken,
                     User = _mapper.Map<UserResponse>(account)

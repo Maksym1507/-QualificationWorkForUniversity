@@ -3,12 +3,12 @@ import React, { FC, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import UserTokenModel from "../../models/userTokenModel";
 import { userStore } from "../../App";
+import LoginResponse from "../../models/responses/loginResponse";
 
 
 export const LoginComponent: FC = observer(() => {
-  const [value, setValue] = useState<UserTokenModel | Error>();
+  const [loginResponse, setLoginResponse] = useState<LoginResponse | Error>();
   const navigate = useNavigate();
 
   const {
@@ -23,22 +23,28 @@ export const LoginComponent: FC = observer(() => {
   });
 
   useEffect(() => {
-    if (value) {
-      if ((value as UserTokenModel).user) {
-        userStore.user = (value as UserTokenModel).user;
-        localStorage.setItem("user", JSON.stringify(userStore.user));
+    if (loginResponse) {
+      if ((loginResponse as LoginResponse).user) {
+        userStore.user = (loginResponse as LoginResponse).user;
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify(userStore.user));
+        localStorage.setItem(
+          "token",
+          JSON.stringify((loginResponse as LoginResponse).accessToken)
+        );
+        alert("You are log in");
         userStore.isAutificated = true;
         navigate("/cabinet");
       }
     }
-
-    console.log(userStore.user.name);
-  }, [value, navigate]);
+  }, [loginResponse, navigate]);
 
   function onSubmit(e: any) {
     (async () => {
       try {
-        setValue(await userStore.userLogin(formData.email, formData.password));
+        setLoginResponse(await userStore.userLogin(formData.email, formData.password));
       } catch (error: any) {
         alert(`${error.message}. Try again`);
       }

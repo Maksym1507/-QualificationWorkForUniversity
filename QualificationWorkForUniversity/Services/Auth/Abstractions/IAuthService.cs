@@ -6,6 +6,6 @@ namespace QualificationWorkForUniversity.Services.Auth.Abstractions
     {
         Task<string> SignUpUserAsync(UserDto request);
 
-        Task<AuthResponse> LoginUserAsync(LoginRequest request);
+        Task<LoginResponse> LoginUserAsync(LoginRequest request);
     }
 }

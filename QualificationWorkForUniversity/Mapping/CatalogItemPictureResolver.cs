@@ -1,12 +1,8 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Options;
-using QualificationWorkForUniversity.Configurations;
-using QualificationWorkForUniversity.Data.Entities;
-using QualificationWorkForUniversity.Models.Dtos.Catalog;
+﻿using QualificationWorkForUniversity.Models.Dtos.Catalog;
 
 namespace QualificationWorkForUniversity.Mapping
 {
-    public class CatalogItemPictureResolver : IMemberValueResolver<CatalogEntity, CatalogItemDto, string, object>
+    public class CatalogItemPictureResolver : IMemberValueResolver<CatalogEntity, CatalogItemDto, string, object>, IMemberValueResolver<CatalogEntity, ProductToBasketModel, string, object>
     {
         private readonly CatalogConfig _config;
 
@@ -16,6 +12,11 @@ namespace QualificationWorkForUniversity.Mapping
         }
 
         public object Resolve(CatalogEntity source, CatalogItemDto destination, string sourceMember, object destMember, ResolutionContext context)
+        {
+            return $"{_config.Host}/{_config.ImgUrl}/{sourceMember}";
+        }
+
+        public object Resolve(CatalogEntity source, ProductToBasketModel destination, string sourceMember, object destMember, ResolutionContext context)
         {
             return $"{_config.Host}/{_config.ImgUrl}/{sourceMember}";
         }

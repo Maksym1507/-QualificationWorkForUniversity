@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { userStore } from "../../App";
-import CabinetModel from "../../models/CabinetModel";
+import CabinetModel from "../../models/cabinetModel";
 
 const CabinetComponent = () => {
   const [userCabinet, setUserCabinet] = useState<CabinetModel>(

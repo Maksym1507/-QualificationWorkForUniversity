@@ -5,11 +5,10 @@ import RegisterUserRequest from "../../models/requests/registerUserRequest";
 import { userStore } from "../../App";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import ErrorResponse from "../../models/responses/errorResponse";
 import SignUpResponse from "../../models/responses/signUpResponse";
 
 export const SignUpComponent: FC = observer(() => {
-  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse | ErrorResponse>();
+  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse>();
   const [formData, setFormData] = useState({
   } as RegisterUserRequest)
 
@@ -23,6 +22,8 @@ export const SignUpComponent: FC = observer(() => {
 
   useEffect(() => {
     if (signUpResponse) {
+      debugger;
+      console.log((signUpResponse as SignUpResponse).succesedMessage);
       if ((signUpResponse as SignUpResponse).succesedMessage) {
         alert(`${(signUpResponse as SignUpResponse).succesedMessage}`);
         navigate("/login");

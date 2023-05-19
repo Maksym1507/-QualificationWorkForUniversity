@@ -16,9 +16,10 @@ export class OrderStore {
   prefetchData = async () => {
     try {
       this.isLoading = true;
-      const res = await orderApi.getOrdersByUserId(userStore.user.id ?? "default");
-      this.orders = res;
-      console.log(res);
+      if (userStore?.user?.id) {
+        const res = await orderApi.getOrdersByUserId(userStore.user.id ?? "default");
+        this.orders = res;
+      }
     } catch (e) {
       if (e instanceof Error) {
         console.error(e.message);

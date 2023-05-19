@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
+
 namespace QualificationWorkForUniversity.Controllers.Order
 {
     [ApiController]
+    [Authorize]
     [Route(ComponentDefaults.DefaultRoute)]
     public class OrderBffController : ControllerBase
     {

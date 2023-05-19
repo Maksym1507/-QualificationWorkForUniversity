@@ -14,8 +14,6 @@ const OrderComponent: FC = observer(() => {
     if (orderMessage) {
       if ((orderMessage as OrderResponse)) {
         basketStore.truncateBasket();
-        debugger;
-        console.log(orderMessage);
         alert(`Order was confirmed with id = ${orderMessage}`);
       }
       else {

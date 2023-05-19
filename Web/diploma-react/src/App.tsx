@@ -18,9 +18,9 @@ import { OrderStore } from './stores/order.store';
 import OrderHistoryComponent from './pages/Order/OrderHistoryComponent';
 import OrderComponent from './pages/Order/OrderComponent';
 
+export const userStore = new UserStore();
 export const catalogStore = new CatalogStore();
 export const basketStore = new BasketStore();
-export const userStore = new UserStore();
 export const orderStore = new OrderStore();
 
 const App: FC = observer(() => {
@@ -34,13 +34,26 @@ const App: FC = observer(() => {
             element={<CatalogItemList />} />
           <Route path="product/:id" element={<CatalogItem />} />
           <Route path="basket" element={<BasketComponent />} />
-          <Route path="register" element={<SignUpComponent />} />
-          <Route path="login" element={<LoginComponent />} />
+          {!userStore.isAutificated && (
+            <>
+              <Route path="register" element={<SignUpComponent />} />
+              <Route path="login" element={<LoginComponent />} />
+            </>
+          )}
+          :
+          {
+            <>
+              <Route path="register" element={<Navigate replace to="/cabinet" />} />
+              <Route path="login" element={<Navigate replace to="/cabinet" />} />
+            </>
+          }
           {userStore.isAutificated && (
             <>
               <Route path="cabinet" element={<CabinetComponent />} />
               <Route path="orders" element={<OrderHistoryComponent />} />
               <Route path="do-order" element={<OrderComponent />} />
+              <Route path="register" element={<Navigate replace to="/cabinet" />} />
+              <Route path="login" element={<Navigate replace to="/cabinet" />} />
             </>
           )}
           :

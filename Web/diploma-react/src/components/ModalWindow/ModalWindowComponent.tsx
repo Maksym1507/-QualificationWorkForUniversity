@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Modal, Nav, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import UserTokenModel from "../../models/userTokenModel";
 import { userStore } from "../../App";
 import { useForm } from "react-hook-form";
 import LoginUserRequest from "../../models/requests/loginUserRequest";
 import RegisterUserRequest from "../../models/requests/registerUserRequest";
-import ErrorResponse from "../../models/responses/errorResponse";
 import SignUpResponse from "../../models/responses/signUpResponse";
+import LoginResponse from "../../models/responses/loginResponse";
 
 const ModalWindowComponent = () => {
   const {
@@ -26,8 +25,8 @@ const ModalWindowComponent = () => {
 
   const navigate = useNavigate();
 
-  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse | ErrorResponse>();
-  const [loginResponse, setLoginResponse] = useState<UserTokenModel | Error>();
+  const [signUpResponse, setSignUpResponse] = useState<SignUpResponse>();
+  const [loginResponse, setLoginResponse] = useState<LoginResponse | Error>();
   const [showLoginModalWindow, setShowLoginModalWindow] = useState(false);
   const [showSignUpModalWindow, setShowSignUpModalWindow] = useState(false);
   const [currentModalWindow, setCurrentModalWindow] = useState<any>(null);
@@ -47,9 +46,17 @@ const ModalWindowComponent = () => {
 
   useEffect(() => {
     if (loginResponse) {
-      if ((loginResponse as UserTokenModel).user) {
-        userStore.user = (loginResponse as UserTokenModel).user;
-        localStorage.setItem("user", JSON.stringify(userStore.user));
+      if ((loginResponse as LoginResponse).user) {
+        userStore.user = (loginResponse as LoginResponse).user;
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify(userStore.user));
+        localStorage.setItem(
+          "token",
+          JSON.stringify((loginResponse as LoginResponse).accessToken)
+        );
+        alert("You are log in");
         userStore.isAutificated = true;
         navigate("/cabinet");
       }

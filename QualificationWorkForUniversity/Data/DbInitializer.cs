@@ -1,6 +1,4 @@
-﻿using QualificationWorkForUniversity.Data.Entities;
-
-namespace QualificationWorkForUniversity.Data
+﻿namespace QualificationWorkForUniversity.Data
 {
     public static class DbInitializer
     {

@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using QualificationWorkForUniversity.Repositories.User;
 using QualificationWorkForUniversity.Repositories.User.Abstractions;
 using QualificationWorkForUniversity.Services.Auth;
-using QualificationWorkForUniversity.Services.User;
-using QualificationWorkForUniversity.Services.User.Abstractions;
 
 namespace QualificationWorkForUniversity
 {
@@ -22,10 +21,54 @@ namespace QualificationWorkForUniversity
             })
               .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
+            builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Diploma", Version = "v1" });
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        Password = new OpenApiOAuthFlow
+                        {
+                            TokenUrl = new Uri("http://www.mi-pizza.ua:5001/connect/token")
+                        }
+                    }
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "oauth2"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header
+                        },
+                        new List<string>()
+                    }
+                });
+            });
+
             builder.Services.Configure<CatalogConfig>(configuration);
 
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.Authority = "http://www.mi-pizza.ua:5001";
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+
             builder.Services.AddAutoMapper(typeof(Program));
 
             builder.Services.AddTransient<ICatalogService, CatalogService>();
@@ -55,24 +98,15 @@ namespace QualificationWorkForUniversity
                         .AllowCredentials());
             });
 
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-                {
-                    options.Authority = "http://localhost:5001";
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateAudience = false
-                    };
-                });
-
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger()
+                .UseSwaggerUI(setup =>
+                {
+                    setup.SwaggerEndpoint($"{configuration["PathBase"]}/swagger/v1/swagger.json", "Catalog.API V1");
+                    setup.OAuthClientId("swagger_login");
+                    setup.OAuthAppName("QualificationWorkForUniversity Swagger UI");
+                });
 
             app.UseRouting();
             app.UseCors("CorsPolicy");
@@ -87,7 +121,6 @@ namespace QualificationWorkForUniversity
             });
 
             CreateDbIfNotExists(app);
-
             app.Run();
 
             IConfiguration GetConfiguration()

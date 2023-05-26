@@ -1,5 +1,6 @@
 ﻿global using System.Net;
 global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Authorization;
 global using AutoMapper;
 global using Microsoft.Extensions.Options;
 global using QualificationWorkForUniversity.Configurations;

@@ -14,7 +14,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionsItems", "Solutions
 		settings.ruleset = settings.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{176F1624-E99E-430C-B1FA-B8AE73E4A6F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proxy", "Proxy", "{40440E8B-5FAF-4BA7-8CCF-6BDBD0C4DEC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{B06B3794-4FC3-49B4-9471-757BA3F5BB6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{58A13ACF-8FF6-45EF-9438-C9E14813723E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{435C6EAC-35C2-44A2-A253-574AB0A33E21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{27CB7EB8-A55E-42EC-8474-44E41F981A66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "conf.d", "conf.d", "{9A4C9D3E-0075-410B-80AB-F1CA4370BCCA}"
+	ProjectSection(SolutionItems) = preProject
+		Proxy\gateway\nginx\conf.d\default.conf = Proxy\gateway\nginx\conf.d\default.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +55,11 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{037E31A5-EE47-42DF-BCDF-C2991A362CD8} = {E3A50CE9-DBF7-40E7-9FEE-AD249027A080}
+		{B06B3794-4FC3-49B4-9471-757BA3F5BB6B} = {40440E8B-5FAF-4BA7-8CCF-6BDBD0C4DEC6}
+		{58A13ACF-8FF6-45EF-9438-C9E14813723E} = {B06B3794-4FC3-49B4-9471-757BA3F5BB6B}
+		{435C6EAC-35C2-44A2-A253-574AB0A33E21} = {40440E8B-5FAF-4BA7-8CCF-6BDBD0C4DEC6}
+		{27CB7EB8-A55E-42EC-8474-44E41F981A66} = {435C6EAC-35C2-44A2-A253-574AB0A33E21}
+		{9A4C9D3E-0075-410B-80AB-F1CA4370BCCA} = {27CB7EB8-A55E-42EC-8474-44E41F981A66}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD4894F2-FECA-4EDF-B0AE-6C4CEB5D758A}

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button, Modal, Nav, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { userStore } from "../../App";
+import { userStore } from "../../../App";
 import { useForm } from "react-hook-form";
-import LoginUserRequest from "../../models/requests/loginUserRequest";
-import RegisterUserRequest from "../../models/requests/registerUserRequest";
-import SignUpResponse from "../../models/responses/signUpResponse";
-import LoginResponse from "../../models/responses/loginResponse";
+import LoginUserRequest from "../../../models/requests/loginUserRequest";
+import RegisterUserRequest from "../../../models/requests/registerUserRequest";
+import SignUpResponse from "../../../models/responses/signUpResponse";
+import LoginResponse from "../../../models/responses/loginResponse";
 
-const ModalWindowComponent = () => {
+const AuthenticationModalWindowComponent = () => {
   const {
     register: registerLoginWindow,
     formState: { errors: errorsForLoginWindow, isValid: isValidForLoginWindow },
@@ -120,6 +120,13 @@ const ModalWindowComponent = () => {
       alert(`${error.message}. Try again`);
     }
   }
+
+  const validatePasswordConfirm = (passwordConfirm: string) => {
+    if (passwordConfirm === signUpformData.password) {
+      return true;
+    }
+    return 'Passwords must match';
+  };
 
   return (
     <>
@@ -348,6 +355,7 @@ const ModalWindowComponent = () => {
                 autoComplete="on"
                 {...registerSignUpWindow("confirmPassword", {
                   required: "Password can not be empty",
+                  validate: validatePasswordConfirm
                 })}
                 onChange={(e: any) => handleChangeSignUpFormData(e)}
               />
@@ -387,4 +395,4 @@ const ModalWindowComponent = () => {
   );
 }
 
-export default ModalWindowComponent;
+export default AuthenticationModalWindowComponent;

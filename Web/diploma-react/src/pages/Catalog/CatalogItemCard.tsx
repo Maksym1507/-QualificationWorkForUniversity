@@ -3,7 +3,6 @@ import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { CatalogItemDto } from "../../models/dtos/catalogItemsDto";
 import { basketStore } from "../../App";
-import { CatalogItemModel } from "../../models/catalogItemModel";
 import BasketItemModel from "../../models/basketItemModel";
 
 const CatalogItemCard: FC<CatalogItemDto> = (props): ReactElement => {
@@ -28,13 +27,13 @@ const CatalogItemCard: FC<CatalogItemDto> = (props): ReactElement => {
             onClick={async () =>
               await basketStore.addItem({
                 id: props.id,
-                product: {id: props.id, title: props.title, price: props.price, pictureUrl: props.pictureUrl},
+                product: { id: props.id, title: props.title, price: props.price, pictureUrl: props.pictureUrl },
                 price: props.price,
                 count: 1,
               } as BasketItemModel)
             }
           >
-            Add to cart
+            Add to basket
           </Button>
         </Card.Body>
       </Card>

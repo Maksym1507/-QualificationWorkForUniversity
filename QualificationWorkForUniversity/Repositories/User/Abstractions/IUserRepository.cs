@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace QualificationWorkForUniversity.Repositories.User.Abstractions
+﻿namespace QualificationWorkForUniversity.Repositories.User.Abstractions
 {
     public interface IUserRepository
     {

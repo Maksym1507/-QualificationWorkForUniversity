@@ -36,15 +36,15 @@ const CatalogItemComponent: FC<any> = observer((): ReactElement => {
                 <section className="my-4">
                   <div className="container px-4 px-lg-5">
                     <div className="row gx-4 gx-lg-5">
-                      <div className="col-md-4">
+                      <div className="col-md-6 col-lg-5 col-xs-1 col-sm-12">
                         <img
-                          className="card-img-top mb-5 mb-md-0"
+                          className="card-img-top mb-3 mb-md-0"
                           src={catalogStore.singleCatalogItem.pictureUrl}
                           alt={catalogStore.singleCatalogItem.title}
                         />
                       </div>
                       <div className="col-md-6">
-                        <h1 className="display-4 fw-bolder mb-2">{catalogStore.singleCatalogItem.title}</h1>
+                        <h1 className="display-4 fw-bolder mb-2 text-center">{catalogStore.singleCatalogItem.title}</h1>
                         <div className="fs-5 mb-2">
                           <span>{catalogStore.singleCatalogItem.price} uah</span>
                         </div>
@@ -55,7 +55,7 @@ const CatalogItemComponent: FC<any> = observer((): ReactElement => {
                             onClick={() => {
                               navigation(-1);
                             }}
-                            className="me-3 btn-info"
+                            className="me-3"
                           >
                             Back to shop
                           </Button>
@@ -70,7 +70,7 @@ const CatalogItemComponent: FC<any> = observer((): ReactElement => {
                               } as BasketItemModel)
                             }
                           >
-                            Add to cart
+                            Add to basket
                           </button>
                         </div>
                       </div>

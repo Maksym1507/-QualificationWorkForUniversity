@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { userStore } from "../../App";
 import CabinetModel from "../../models/cabinetModel";
+import UpdateUserModalWindowComponent from "../../components/ModalWindow/UpdateUser/UpdateUserModalWindowComponent";
+import ChangeUserPasswordModalWindowComponent from "../../components/ModalWindow/ChangeUserPassword/ChangeUserPasswordModalWindow";
 
 const CabinetComponent = () => {
   const [userCabinet, setUserCabinet] = useState<CabinetModel>(
@@ -12,7 +14,7 @@ const CabinetComponent = () => {
     (async () => {
       setUserCabinet(await userStore.getUser(userStore.user.id));
     })();
-  }, []);
+  }, [userStore.user]);
 
   if (userStore.isAutificated) {
     return (
@@ -29,7 +31,7 @@ const CabinetComponent = () => {
                         <p className="mb-0">Name</p>
                       </div>
                       <div className="col-sm-9">
-                        <p className="text-muted mb-0">{userCabinet.name}</p>
+                        <p className="text-muted mb-0">{userStore.user.name}</p>
                       </div>
                     </div>
                     <hr />
@@ -39,7 +41,7 @@ const CabinetComponent = () => {
                       </div>
                       <div className="col-sm-9">
                         <p className="text-muted mb-0">
-                          {userCabinet.lastName}
+                          {userStore.user.lastName}
                         </p>
                       </div>
                     </div>
@@ -49,7 +51,7 @@ const CabinetComponent = () => {
                         <p className="mb-0">Email</p>
                       </div>
                       <div className="col-sm-9">
-                        <p className="text-muted mb-0">{userCabinet.email}</p>
+                        <p className="text-muted mb-0">{userStore.user.email}</p>
                       </div>
                     </div>
                     <hr />
@@ -59,7 +61,7 @@ const CabinetComponent = () => {
                       </div>
                       <div className="col-sm-9">
                         <p className="text-muted mb-0">
-                          {userCabinet.phoneNumber}
+                          {userStore.user.phoneNumber}
                         </p>
                       </div>
                     </div>
@@ -68,6 +70,8 @@ const CabinetComponent = () => {
               </div>
             </div>
           </div>
+          <UpdateUserModalWindowComponent />
+          <ChangeUserPasswordModalWindowComponent />
         </div>
       </>
     );

@@ -8,10 +8,10 @@ namespace QualificationWorkForUniversity.Services.Auth
         {
             using (var client = new HttpClient())
             {
-                var discoveryDocument = await client.GetDiscoveryDocumentAsync("http://www.mi-pizza.ua:5001");
+                var discoveryDocument = await client.GetDiscoveryDocumentAsync("http://www.ilma-pizza.ua:5001");
                 var token = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
                 {
-                    Address = "http://www.mi-pizza.ua:5001/connect/token",
+                    Address = "http://www.ilma-pizza.ua:5001/connect/token",
                     ClientId = "react_client",
                     ClientSecret = "secret_1",
                     Scope = "openid",

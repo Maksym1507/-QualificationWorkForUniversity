@@ -6,9 +6,9 @@ export class BasketStore {
   totalSum: number = 0;
   constructor() {
     makeAutoObservable(this);
-    if (localStorage.getItem("cart")) {
-      this.items = JSON.parse(localStorage.getItem("cart") || "");
-    } else localStorage.setItem("cart", JSON.stringify(this.items));
+    if (localStorage.getItem("basket")) {
+      this.items = JSON.parse(localStorage.getItem("basket") || "");
+    } else localStorage.setItem("basket", JSON.stringify(this.items));
 
     if (localStorage.getItem("totalSum")) {
       this.totalSum = JSON.parse(localStorage.getItem("totalSum") || "");
@@ -37,7 +37,7 @@ export class BasketStore {
 
     console.log(this.items);
 
-    localStorage.setItem("cart", JSON.stringify(this.items));
+    localStorage.setItem("basket", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
   }
 
@@ -48,7 +48,7 @@ export class BasketStore {
       this.totalSum -= this.items[isFound].count * this.items[isFound].product.price;
       this.items.splice(isFound, 1);
 
-      localStorage.setItem("cart", JSON.stringify(this.items));
+      localStorage.setItem("basket", JSON.stringify(this.items));
       localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
     }
   }
@@ -59,7 +59,7 @@ export class BasketStore {
     this.items[isFound].count++;
     this.totalSum += this.items[isFound].product.price;
 
-    localStorage.setItem("cart", JSON.stringify(this.items));
+    localStorage.setItem("basket", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
   }
 
@@ -75,14 +75,14 @@ export class BasketStore {
       this.totalSum -= this.items[isFound].product.price;
     }
 
-    localStorage.setItem("cart", JSON.stringify(this.items));
+    localStorage.setItem("basket", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
   }
 
   truncateBasket() {
     this.items = [];
     this.totalSum = 0;
-    localStorage.setItem("cart", JSON.stringify(this.items));
+    localStorage.setItem("basket", JSON.stringify(this.items));
     localStorage.setItem("totalSum", JSON.stringify(this.totalSum));
   }
 }

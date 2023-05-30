@@ -23,7 +23,7 @@ const CartComponent: FC = observer(() => {
                     >
                       <thead>
                         <tr>
-                          <th style={{ width: "20%" }}></th>
+                          <th style={{ width: "15%" }}></th>
                           <th style={{ width: "20%" }}>Title</th>
                           <th style={{ width: "20%" }}>Price</th>
                           <th style={{ width: "20%" }}>Quantity</th>
@@ -53,7 +53,7 @@ const CartComponent: FC = observer(() => {
                               <td data-th="Quantity">
                                 <div className="d-flex justify-content-center">
                                   <div
-                                    className="me-1"
+                                    className="me-1 cursor-pointer"
                                     onClick={() =>
                                       basketStore.decreaseItemCount(item.product.id)
                                     }
@@ -62,7 +62,7 @@ const CartComponent: FC = observer(() => {
                                   </div>
                                   <div>{item.count}</div>
                                   <div
-                                    className="ms-1"
+                                    className="ms-1 cursor-pointer"
                                     onClick={() =>
                                       basketStore.increaseItemCount(item.product.id)
                                     }
@@ -78,6 +78,7 @@ const CartComponent: FC = observer(() => {
                                     height={20}
                                     src="https://img.icons8.com/ios-glyphs/512/trash.png"
                                     alt="delete"
+                                    className="cursor-pointer"
                                     onClick={() =>
                                       basketStore.deleteItem(item.product.id)
                                     }
@@ -94,12 +95,12 @@ const CartComponent: FC = observer(() => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-start">
-                  <button
-                    className="btn btn-outline-dark flex-shrink-0 me-3"
+                  <Button
+                    className="btn-success me-3"
                     onClick={() => navigate("/do-order")}
                   >
                     Make an order
-                  </button>
+                  </Button>
                   <Button
                     onClick={() => {
                       navigate(-1);

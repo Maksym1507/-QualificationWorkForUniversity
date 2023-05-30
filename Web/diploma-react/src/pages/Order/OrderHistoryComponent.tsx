@@ -52,7 +52,7 @@ const OrderHistoryComponent: FC = observer(() => {
                           </div>
                         </Accordion.Header>
                         <Accordion.Body className="w-100">
-                          <section className=" gradient-custom">
+                          <section className="gradient-custom">
                             <div className="container">
                               <div className="row d-flex justify-content-center align-items-center h-100">
                                 <div>

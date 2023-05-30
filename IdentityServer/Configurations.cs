@@ -15,7 +15,7 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    AllowedCorsOrigins = { "http://www.mi-pizza.ua:5000" },
+                    AllowedCorsOrigins = { "http://www.ilma-pizza.ua:5000" },
                     AccessTokenLifetime = 1800,
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientId = "swagger_login",

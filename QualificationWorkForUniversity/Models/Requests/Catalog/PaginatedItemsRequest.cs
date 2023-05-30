@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-namespace QualificationWorkForUniversity.Models.Requests.Catalog
+﻿namespace QualificationWorkForUniversity.Models.Requests.Catalog
 {
     public class PaginatedItemsRequest
     {

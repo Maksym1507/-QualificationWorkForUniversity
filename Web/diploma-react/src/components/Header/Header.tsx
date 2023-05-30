@@ -3,16 +3,16 @@ import { FC } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import { basketStore, catalogStore, userStore } from "../../App";
-import ModalWindowComponent from "../ModalWindow/ModalWindowComponent";
 import basketImg from "../../images/shopping-cart.png";
 import userProfileImg from "../../images/user-profile.png";
+import AuthenticationModalWindowComponent from "../ModalWindow/Authentication";
 
 const HeaderComponent: FC = observer(() => {
   return (
     <>
       <Navbar sticky="top" bg="secondary" expand="lg" variant="dark">
         <Container fluid>
-          <Navbar.Brand>Mi Pizza</Navbar.Brand>
+          <Navbar.Brand>Ilma Pizza</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -21,7 +21,7 @@ const HeaderComponent: FC = observer(() => {
               <Nav.Link
                 as={Link}
                 to="/product"
-                className="text-decoration-none text-white cursor-pointer"
+                className="text-white cursor-pointer"
                 onClick={() => {
                   catalogStore.changeCurrentPage(1)
                   catalogStore.changeFilter("dafault")
@@ -69,7 +69,7 @@ const HeaderComponent: FC = observer(() => {
                 </NavDropdown>
               </Nav>
             )}
-            {!userStore.isAutificated && <ModalWindowComponent />}
+            {!userStore.isAutificated && <AuthenticationModalWindowComponent />}
           </Navbar.Collapse>
         </Container>
       </Navbar >

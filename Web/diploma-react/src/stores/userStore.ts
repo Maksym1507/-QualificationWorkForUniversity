@@ -3,6 +3,8 @@ import UserModel from "../models/userModel";
 import * as usersApi from "../api/modules/user";
 import * as authApi from "../api/modules/auth";
 import RegisterUserRequest from "../models/requests/registerUserRequest";
+import UpdateUserRequest from "../models/requests/updateUserRequest";
+import ChangeUserPasswordRequest from "../models/requests/changeUserPasswordRequest";
 
 export class UserStore {
   isAutificated: boolean = false;
@@ -19,12 +21,19 @@ export class UserStore {
   }
 
   async userLogin(email: string, password: string) {
-    debugger;
     return await authApi.userLogin({ email, password });
   }
 
-  public async getUser(id: string) {
+  async getUser(id: string) {
     return await usersApi.getUserById(id);
+  }
+
+  async updateUser(id: string, updatedUser: UpdateUserRequest) {
+    return await usersApi.updateUser(id, updatedUser);
+  }
+
+  async changeUserPassword(id: string, changedPassword: ChangeUserPasswordRequest) {
+    return await usersApi.changeUserPassword(id, changedPassword);
   }
 
   userLogout() {

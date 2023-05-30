@@ -10,19 +10,19 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5000
       - ConnectionString=Server=db;Database=master;User=sa;Password=S3cur3P@ssW0rd!;
-      - Authorization__Authority=http://www.mi-pizza.ua:5001
-      - PathBase=http://www.mi-pizza.ua:5000
+      - Authorization__Authority=http://www.ilma-pizza.ua:5001
+      - PathBase=http://www.ilma-pizza.ua:5000
     depends_on:
       - db
     ports:
       - 5000:5000
-  web.react:
-    container_name: lde.web.react
-    build: 
-      context: ./Web/diploma-react
-      dockerfile: Dockerfile
-    ports:
-      - 3000:3000
+  #web.react:
+  #  container_name: lde.web.react
+  #  build: 
+  #    context: ./Web/diploma-react
+  #    dockerfile: Dockerfile
+  #  ports:
+  #    - 3000:3000
   identityserver:
     container_name: lde.identityserver
     build:

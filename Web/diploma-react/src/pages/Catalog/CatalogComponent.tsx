@@ -1,4 +1,4 @@
-import React, { ReactElement, FC, useState } from "react";
+import React, { ReactElement, FC } from "react";
 import { observer } from "mobx-react-lite";
 import { Spinner } from "react-bootstrap";
 import CatalogItemCard from "./CatalogItemCard";

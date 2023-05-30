@@ -7,7 +7,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://www.mi-pizza.ua:5001"
+      "applicationUrl": "http://www.ilma-pizza.ua:5001"
     },
     "Docker": {
       "commandName": "Docker",

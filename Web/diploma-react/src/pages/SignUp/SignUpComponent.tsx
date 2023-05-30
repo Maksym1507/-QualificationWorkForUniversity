@@ -44,6 +44,13 @@ export const SignUpComponent: FC = observer(() => {
     }
   }
 
+  const validatePasswordConfirm = (passwordConfirm: string) => {
+    if (passwordConfirm === formData.password) {
+      return true;
+    }
+    return 'Passwords must match';
+  };
+
   return (
     <div>
       <div className="container h-100">
@@ -181,6 +188,7 @@ export const SignUpComponent: FC = observer(() => {
                   autoComplete="on"
                   {...registerSignUpWindow("confirmPassword", {
                     required: "Password can not be empty",
+                    validate: validatePasswordConfirm
                   })}
                   onChange={(e: any) => handleChangeSignUpFormData(e)}
                 />

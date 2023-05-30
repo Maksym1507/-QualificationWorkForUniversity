@@ -33,7 +33,7 @@ namespace QualificationWorkForUniversity
                     {
                         Password = new OpenApiOAuthFlow
                         {
-                            TokenUrl = new Uri("http://www.mi-pizza.ua:5001/connect/token")
+                            TokenUrl = new Uri("http://www.ilma-pizza.ua:5001/connect/token")
                         }
                     }
                 });
@@ -61,7 +61,7 @@ namespace QualificationWorkForUniversity
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    options.Authority = "http://www.mi-pizza.ua:5001";
+                    options.Authority = "http://www.ilma-pizza.ua:5001";
                     options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {

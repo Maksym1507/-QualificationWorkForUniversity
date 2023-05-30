@@ -1,6 +1,4 @@
 ﻿using QualificationWorkForUniversity.Models.Dtos.Catalog;
-using QualificationWorkForUniversity.Repositories.Catalog.Abstractions;
-using QualificationWorkForUniversity.Services.Catalog.Abstractions;
 
 namespace QualificationWorkForUniversity.Services.Catalog
 {
@@ -23,11 +21,11 @@ namespace QualificationWorkForUniversity.Services.Catalog
             _loggerService = loggerService;
         }
 
-        public async Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageSize, int pageIndex)
+        public async Task<PaginatedItemsResponse<CatalogItemDto>?> GetCatalogItemsAsync(int pageSize, int pageIndex, string filter)
         {
             return await ExecuteSafeAsync(async () =>
             {
-                var result = await _catalogItemRepository.GetByPageAsync(pageIndex, pageSize);
+                var result = await _catalogItemRepository.GetByPageAsync(pageIndex, pageSize, filter);
 
                 if (!result.Data.Any())
                 {

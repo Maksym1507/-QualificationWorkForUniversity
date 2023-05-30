@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { FC } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
-import { basketStore, userStore } from "../../App";
+import { basketStore, catalogStore, userStore } from "../../App";
 import ModalWindowComponent from "../ModalWindow/ModalWindowComponent";
 import basketImg from "../../images/shopping-cart.png";
 import userProfileImg from "../../images/user-profile.png";
@@ -22,6 +22,11 @@ const HeaderComponent: FC = observer(() => {
                 as={Link}
                 to="/product"
                 className="text-decoration-none text-white cursor-pointer"
+                onClick={() => {
+                  catalogStore.changeCurrentPage(1)
+                  catalogStore.changeFilter("dafault")
+                  catalogStore.prefetchData();
+                }}
               >
                 Products
               </Nav.Link>
@@ -67,7 +72,7 @@ const HeaderComponent: FC = observer(() => {
             {!userStore.isAutificated && <ModalWindowComponent />}
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar >
       <Outlet />
     </>
   );

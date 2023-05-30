@@ -8,10 +8,10 @@ export const getCatalogItemById = (id: string) =>
     method: "POST",
   });
 
-export const getCatalogItems = (pageIndex: number, pageSize: number) =>
+export const getCatalogItems = (pageIndex: number, pageSize: number, filter: string) =>
   apiClient({
     url: config.PRODUCT_URL,
     path: `items`,
     method: "POST",
-    body: { pageIndex, pageSize }
+    body: { pageIndex, pageSize, filter }
   });

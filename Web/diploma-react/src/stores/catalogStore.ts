@@ -7,6 +7,7 @@ class CatalogStore {
   currentPage = 1;
   totalPages = 0;
   pageSize = 6;
+  filter = "default";
 
   items: CatalogItemDto[] = [];
   isLoading = false;
@@ -18,9 +19,11 @@ class CatalogStore {
 
   prefetchData = async () => {
     try {
-      this.isLoading = true;
+      runInAction(() => {
+        this.isLoading = true;
+      })
       const pageIndex = this.currentPage - 1;
-      const res = await catalogItemsApi.getCatalogItems(pageIndex, this.pageSize);
+      let res = await catalogItemsApi.getCatalogItems(pageIndex, this.pageSize, this.filter);
       this.items = res.data;
       this.totalPages = Math.ceil(res.count / this.pageSize);
     } catch (e) {
@@ -28,7 +31,9 @@ class CatalogStore {
         console.error(e.message);
       }
     }
-    this.isLoading = false;
+    runInAction(() => {
+      this.isLoading = false;
+    })
   };
 
   async getSingleCatalogItem(id: string) {
@@ -43,6 +48,14 @@ class CatalogStore {
       }
     }
     this.isLoading = false;
+  }
+
+  changeCurrentPage(currentPage: number) {
+    this.currentPage = currentPage;
+  }
+
+  changeFilter(filter: string) {
+    this.filter = filter;
   }
 }
 

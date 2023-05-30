@@ -13,16 +13,44 @@
             _logger = logger;
         }
 
-        public async Task<PaginatedItems<CatalogEntity>> GetByPageAsync(int pageIndex, int pageSize)
+        public async Task<PaginatedItems<CatalogEntity>> GetByPageAsync(int pageIndex, int pageSize, string filter)
         {
-            IQueryable<CatalogEntity> query = _dbContext.CatalogItems;
+            List<CatalogEntity>? itemsOnPage = new ();
+            var query = _dbContext.CatalogItems;
 
             var totalItems = await query.LongCountAsync();
 
-            var itemsOnPage = await query.OrderBy(c => c.Title)
+            if (filter == "titleByAsc")
+            {
+                itemsOnPage = await query.OrderBy(o => o.Title).Skip(pageSize * pageIndex)
+               .Take(pageSize)
+               .ToListAsync();
+            }
+            else if (filter == "titleByDesc")
+            {
+                itemsOnPage = await query.OrderByDescending(o => o.Title).Skip(pageSize * pageIndex)
+               .Take(pageSize)
+               .ToListAsync();
+            }
+            else if (filter == "priceByAsc")
+            {
+                itemsOnPage = await query.OrderBy(o => o.Price).Skip(pageSize * pageIndex)
+               .Take(pageSize)
+               .ToListAsync();
+            }
+            else if (filter == "priceByDesc")
+            {
+                itemsOnPage = await query.OrderByDescending(o => o.Price).Skip(pageSize * pageIndex)
+               .Take(pageSize)
+               .ToListAsync();
+            }
+            else
+            {
+                itemsOnPage = await query
                .Skip(pageSize * pageIndex)
                .Take(pageSize)
                .ToListAsync();
+            }
 
             return new PaginatedItems<CatalogEntity>() { TotalCount = totalItems, Data = itemsOnPage };
         }

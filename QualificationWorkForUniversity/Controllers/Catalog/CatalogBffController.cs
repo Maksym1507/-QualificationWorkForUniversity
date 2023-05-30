@@ -21,7 +21,7 @@ namespace QualificationWorkForUniversity.Controllers.Catalog
         [ProducesResponseType(typeof(PaginatedItemsResponse<CatalogItemDto>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Items(PaginatedItemsRequest request)
         {
-            var result = await _catalogService.GetCatalogItemsAsync(request.PageSize, request.PageIndex);
+            var result = await _catalogService.GetCatalogItemsAsync(request.PageSize, request.PageIndex, request.Filter);
             return Ok(result);
         }
 

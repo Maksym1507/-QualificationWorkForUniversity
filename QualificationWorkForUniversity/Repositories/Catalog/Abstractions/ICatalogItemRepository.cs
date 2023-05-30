@@ -2,7 +2,7 @@
 {
     public interface ICatalogItemRepository
     {
-        Task<PaginatedItems<CatalogEntity>> GetByPageAsync(int pageIndex, int pageSize);
+        Task<PaginatedItems<CatalogEntity>> GetByPageAsync(int pageIndex, int pageSize, string filter);
 
         Task<CatalogEntity?> GetByIdAsync(int id);
 

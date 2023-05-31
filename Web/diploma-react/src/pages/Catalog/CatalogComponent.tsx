@@ -50,7 +50,6 @@ const CatalogItemList: FC<any> = observer((): ReactElement => {
                   <option value="titleByDesc">Title by descending</option>
                   <option value="priceByAsc">Price by ascending</option>
                   <option value="priceByDesc">Price by descending</option>
-                  <option value="default">Reset</option>
                 </select>
               </div>
               <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">

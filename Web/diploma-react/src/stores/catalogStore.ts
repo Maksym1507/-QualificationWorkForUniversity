@@ -7,7 +7,7 @@ class CatalogStore {
   currentPage = 1;
   totalPages = 0;
   pageSize = 6;
-  filter = "default";
+  filter = "titleByAsc";
 
   items: CatalogItemDto[] = [];
   isLoading = false;

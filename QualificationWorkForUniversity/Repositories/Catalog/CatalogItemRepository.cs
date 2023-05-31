@@ -15,42 +15,33 @@
 
         public async Task<PaginatedItems<CatalogEntity>> GetByPageAsync(int pageIndex, int pageSize, string filter)
         {
-            List<CatalogEntity>? itemsOnPage = new ();
             var query = _dbContext.CatalogItems;
 
             var totalItems = await query.LongCountAsync();
 
-            if (filter == "titleByAsc")
+            List<CatalogEntity>? itemsOnPage = filter switch
             {
-                itemsOnPage = await query.OrderBy(o => o.Title).Skip(pageSize * pageIndex)
-               .Take(pageSize)
-               .ToListAsync();
-            }
-            else if (filter == "titleByDesc")
-            {
-                itemsOnPage = await query.OrderByDescending(o => o.Title).Skip(pageSize * pageIndex)
-               .Take(pageSize)
-               .ToListAsync();
-            }
-            else if (filter == "priceByAsc")
-            {
-                itemsOnPage = await query.OrderBy(o => o.Price).Skip(pageSize * pageIndex)
-               .Take(pageSize)
-               .ToListAsync();
-            }
-            else if (filter == "priceByDesc")
-            {
-                itemsOnPage = await query.OrderByDescending(o => o.Price).Skip(pageSize * pageIndex)
-               .Take(pageSize)
-               .ToListAsync();
-            }
-            else
-            {
-                itemsOnPage = await query
-               .Skip(pageSize * pageIndex)
-               .Take(pageSize)
-               .ToListAsync();
-            }
+                "titleByAsc" => await query.OrderBy(o => o.Title).
+                    Skip(pageSize * pageIndex).
+                    Take(pageSize).
+                    ToListAsync(),
+                "titleByDesc" => await query.OrderByDescending(o => o.Title).
+                    Skip(pageSize * pageIndex).
+                    Take(pageSize).
+                    ToListAsync(),
+                "priceByAsc" => await query.OrderBy(o => o.Price).
+                    Skip(pageSize * pageIndex).
+                    Take(pageSize).
+                    ToListAsync(),
+                "priceByDesc" => itemsOnPage = await query.OrderByDescending(o => o.Price).
+                    Skip(pageSize * pageIndex).
+                    Take(pageSize).
+                    ToListAsync(),
+                _ => await query.OrderBy(o => o.Title).
+                    Skip(pageSize * pageIndex).
+                    Take(pageSize).
+                    ToListAsync()
+            };
 
             return new PaginatedItems<CatalogEntity>() { TotalCount = totalItems, Data = itemsOnPage };
         }

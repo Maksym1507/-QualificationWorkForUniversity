@@ -16,13 +16,13 @@ services:
       - db
     ports:
       - 5000:5000
-  #web.react:
-  #  container_name: lde.web.react
-  #  build: 
-  #    context: ./Web/diploma-react
-  #    dockerfile: Dockerfile
-  #  ports:
-  #    - 3000:3000
+  web.react:
+    container_name: lde.web.react
+    build: 
+      context: ./Web/diploma-react
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
   identityserver:
     container_name: lde.identityserver
     build:

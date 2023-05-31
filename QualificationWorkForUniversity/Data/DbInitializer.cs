@@ -20,35 +20,11 @@
             {
                 new CatalogEntity
                 {
-                    Description = "chicken thigh, fresh cabbage, pickled cucumber, tomato, carrot, Mars onion, potato dips, shawarma sauce in lavash",
-                    Title = "Hawaian",
-                    Price = 260,
-                    Weight = 450,
-                    PictureFileName = "1.png"
-                },
-                new CatalogEntity
-                {
-                    Description = "hunting sausages, feta, olives, sriracha, mozzarella, oregano, tomato sauce",
-                    Title = "Saint Diablo",
-                    Price = 218,
-                    Weight = 870,
-                    PictureFileName = "2.png"
-                },
-                new CatalogEntity
-                {
-                    Description = "beef cutlet, pickled cucumber, onion, ketchup, American mustard, butter",
-                    Title = "Hamburger",
-                    Price = 315,
-                    Weight = 860,
-                    PictureFileName = "3.png"
-                },
-                new CatalogEntity
-                {
                     Description = "pepperoni, hunting sausages, feta, olives, sriracha, mozzarella, oregano, tomato sauce",
                     Title = "Pepperoni",
                     Price = 335,
                     Weight = 800,
-                    PictureFileName = "4.png"
+                    PictureFileName = "1.png"
                 },
                 new CatalogEntity
                 {
@@ -56,7 +32,7 @@
                     Title = "Neapolitan",
                     Price = 199,
                     Weight = 400,
-                    PictureFileName = "5.png"
+                    PictureFileName = "2.png"
                 },
                 new CatalogEntity
                 {
@@ -64,23 +40,23 @@
                     Title = "European",
                     Price = 149,
                     Weight = 550,
-                    PictureFileName = "6.png"
+                    PictureFileName = "3.png"
                 },
                 new CatalogEntity
                 {
-                    Description = "mozzarella, pineapple, chicken fillet, oregano, parsley, tomato sauce",
-                    Title = "Mi Pizza",
+                    Description = "chicken fillet, game sausages, gherkins, mozzarella, croquettes, oregano, tomato sauce",
+                    Title = "Ilma Pizza",
                     Price = 285,
                     Weight = 900,
-                    PictureFileName = "7.png"
+                    PictureFileName = "4.png"
                 },
                 new CatalogEntity
                 {
-                    Description = "Feta, mozzarella, broccoli, olives, olives, bell peppers, tomatoes, mars onion, oregano, tomato sauce",
-                    Title = "Vegetarian",
-                    Price = 270,
-                    Weight = 550,
-                    PictureFileName = "8.png"
+                    Description = "mozzarella, ham, salami, hunting sausages, ham, bacon, olives, oregano, tomato sauce",
+                    Title = "Pizza Mix",
+                    Price = 260,
+                    Weight = 450,
+                    PictureFileName = "5.png"
                 },
                 new CatalogEntity
                 {
@@ -88,7 +64,7 @@
                     Title = "4 Cheeses",
                     Price = 210,
                     Weight = 500,
-                    PictureFileName = "9.png"
+                    PictureFileName = "6.png"
                 },
                 new CatalogEntity
                 {
@@ -96,15 +72,7 @@
                     Title = "Pizza with ham and mushrooms",
                     Price = 350,
                     Weight = 900,
-                    PictureFileName = "10.png"
-                },
-                new CatalogEntity
-                {
-                    Description = "ham, salami, Parmesan cheese, hard cheese, mozzarella, Dorblu cheese, mushrooms, tomatoes, Bechamel sauce, tomato sauce",
-                    Title = "Double Punch",
-                    Price = 220,
-                    Weight = 450,
-                    PictureFileName = "11.png"
+                    PictureFileName = "7.png"
                 },
                 new CatalogEntity
                 {
@@ -112,7 +80,7 @@
                     Title = "Pizza Boom of meat",
                     Price = 315,
                     Weight = 850,
-                    PictureFileName = "12.png"
+                    PictureFileName = "8.png"
                 },
                 new CatalogEntity
                 {
@@ -120,7 +88,7 @@
                     Title = "4 Meats",
                     Price = 255,
                     Weight = 550,
-                    PictureFileName = "13.png"
+                    PictureFileName = "9.png"
                 },
                 new CatalogEntity
                 {
@@ -128,7 +96,7 @@
                     Title = "Seafood",
                     Price = 230,
                     Weight = 550,
-                    PictureFileName = "14.png"
+                    PictureFileName = "10.png"
                 },
             };
         }

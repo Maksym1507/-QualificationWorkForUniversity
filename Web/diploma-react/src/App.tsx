@@ -73,8 +73,8 @@ const App: FC = observer(() => {
               />
             </>
           }
+          <Route path="*" element={<NoMatchComponent />} />
         </Route>
-        <Route path="*" element={<NoMatchComponent />} />
       </Routes>
     </div>)
 })

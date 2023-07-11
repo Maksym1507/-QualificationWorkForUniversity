@@ -1,4 +1,4 @@
-﻿namespace WebApi.Controllers
+﻿namespace QualificationWorkForUniversity.Controllers
 {
     [Authorize]
     [ApiController]

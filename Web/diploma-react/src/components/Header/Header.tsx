@@ -40,7 +40,7 @@ const HeaderComponent: FC = observer(() => {
                 <span className="ms-1">{basketStore.getTotalCountOfBasketItems()}</span>
               </Nav.Link>
             </Nav>
-            {userStore.isAutificated && (
+            {userStore.isAuthenticated && (
               <Nav
               >
                 <NavDropdown className="my-nav-dropdown" align="end" title={<img
@@ -69,7 +69,7 @@ const HeaderComponent: FC = observer(() => {
                 </NavDropdown>
               </Nav>
             )}
-            {!userStore.isAutificated && <AuthenticationModalWindowComponent />}
+            {!userStore.isAuthenticated && <AuthenticationModalWindowComponent />}
           </Navbar.Collapse>
         </Container>
       </Navbar >

@@ -5,7 +5,7 @@ import UpdateUserModalWindowComponent from "../../components/ModalWindow/UpdateU
 import ChangeUserPasswordModalWindowComponent from "../../components/ModalWindow/ChangeUserPassword/ChangeUserPasswordModalWindow";
 
 const CabinetComponent = () => {
-  if (userStore.isAutificated) {
+  if (userStore.isAuthenticated) {
     return (
       <>
         <div className="container text-center">

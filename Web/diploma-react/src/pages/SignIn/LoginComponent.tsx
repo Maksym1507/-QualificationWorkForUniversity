@@ -35,7 +35,7 @@ export const LoginComponent: FC = observer(() => {
           JSON.stringify((loginResponse as LoginResponse).accessToken)
         );
         alert("You are log in");
-        userStore.isAutificated = true;
+        userStore.isAuthenticated = true;
         navigate("/cabinet");
       }
     }

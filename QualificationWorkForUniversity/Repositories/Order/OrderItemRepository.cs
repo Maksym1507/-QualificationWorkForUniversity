@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QualificationWorkForUniversity.Models;
-
-namespace QualificationWorkForUniversity.Repositories
+﻿namespace QualificationWorkForUniversity.Repositories
 {
     public class OrderItemRepository : IOrderItemRepository
     {

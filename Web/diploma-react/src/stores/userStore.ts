@@ -7,8 +7,7 @@ import UpdateUserRequest from "../models/requests/updateUserRequest";
 import ChangeUserPasswordRequest from "../models/requests/changeUserPasswordRequest";
 
 export class UserStore {
-  isAutificated: boolean = false;
-  show: boolean = false;
+  isAuthenticated: boolean = false;
   user: UserModel = {} as UserModel;
 
   constructor() {
@@ -37,7 +36,7 @@ export class UserStore {
   }
 
   userLogout() {
-    this.isAutificated = false;
+    this.isAuthenticated = false;
     this.user = {} as UserModel;
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -48,7 +47,7 @@ export class UserStore {
     if (localStorage.getItem("user")) {
       this.user = JSON.parse(localStorage.getItem("user") || "");
       if (this.user.email) {
-        this.isAutificated = true;
+        this.isAuthenticated = true;
       }
     } else {
       localStorage.setItem("user", JSON.stringify(this.user));

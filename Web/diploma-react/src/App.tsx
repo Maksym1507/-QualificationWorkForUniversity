@@ -34,7 +34,7 @@ const App: FC = observer(() => {
             element={<CatalogItemList />} />
           <Route path="product/:id" element={<CatalogItem />} />
           <Route path="basket" element={<BasketComponent />} />
-          {!userStore.isAutificated && (
+          {!userStore.isAuthenticated && (
             <>
               <Route path="register" element={<SignUpComponent />} />
               <Route path="login" element={<LoginComponent />} />
@@ -47,7 +47,7 @@ const App: FC = observer(() => {
               <Route path="login" element={<Navigate replace to="/cabinet" />} />
             </>
           }
-          {userStore.isAutificated && (
+          {userStore.isAuthenticated && (
             <>
               <Route path="cabinet" element={<CabinetComponent />} />
               <Route path="orders" element={<OrderHistoryComponent />} />

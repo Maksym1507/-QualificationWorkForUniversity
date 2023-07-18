@@ -12,6 +12,34 @@
 
                 await context.SaveChangesAsync();
             }
+
+            if (!context.Roles.Any())
+            {
+                await context.Roles.AddRangeAsync(GetPreconfiguredRoles());
+
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Users.Any())
+            {
+                var adminRole = await context.Roles.Where(w => w.Name == "admin").FirstOrDefaultAsync();
+
+                if (adminRole != null)
+                {
+                    await context.Users.AddAsync(new UserEntity()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = "Dima",
+                        LastName = "admin",
+                        Email = "admin@gmail.com",
+                        Password = HashPasswordService.HashPassword("admin1234"),
+                        PhoneNumber = "1234567890",
+                        RoleId = adminRole.Id,
+                    });
+
+                    await context.SaveChangesAsync();
+                }
+            }
         }
 
         private static IEnumerable<CatalogEntity> GetPreconfiguredItems()
@@ -97,6 +125,36 @@
                     Price = 230,
                     Weight = 550,
                     PictureFileName = "10.png"
+                },
+            };
+        }
+
+        private static IEnumerable<RoleEntity> GetPreconfiguredRoles()
+        {
+            return new List<RoleEntity>()
+            {
+                new RoleEntity()
+                {
+                    Name = "admin"
+                },
+                new RoleEntity()
+                {
+                    Name = "user"
+                },
+            };
+        }
+
+        private static IEnumerable<UserEntity> GetPreconfiguredRolesAndUsers()
+        {
+            return new List<UserEntity>()
+            {
+                new UserEntity()
+                {
+                    Name = "Dima",
+                    LastName = "admin",
+                    Email = "admin@gmail.com",
+                    Password = HashPasswordService.HashPassword("admin1234"),
+                    PhoneNumber = "1234567890",
                 },
             };
         }

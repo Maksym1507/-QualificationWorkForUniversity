@@ -1,4 +1,5 @@
-﻿using IdentityServer4;
+﻿using System.Security.Claims;
+using IdentityServer4;
 using IdentityServer4.Models;
 
 namespace IdentityServer
@@ -7,7 +8,7 @@ namespace IdentityServer
     {
         public static IEnumerable<ApiResource> Apis => new List<ApiResource>
         {
-            new ApiResource("api", "My_Api_Client")
+            new ApiResource("api", "My_Api_Client", new List<string> { ClaimTypes.Role })
         };
 
         public static IEnumerable<Client> Clients =>
@@ -15,7 +16,7 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    AllowedCorsOrigins = { "http://www.ilma-pizza.ua:5000" },
+                    AllowedCorsOrigins = { "http://localhost:5000" },
                     AccessTokenLifetime = 1800,
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientId = "swagger_login",
@@ -23,7 +24,12 @@ namespace IdentityServer
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId
-                    }
+                    },
+
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysSendClientClaims = true,
+                    ClientClaimsPrefix = string.Empty
                 },
                 new Client
                 {
@@ -34,7 +40,12 @@ namespace IdentityServer
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId
-                    }
+                    },
+
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysSendClientClaims = true,
+                    ClientClaimsPrefix = string.Empty
                 }
             };
 

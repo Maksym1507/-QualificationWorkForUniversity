@@ -1,7 +1,4 @@
-﻿using QualificationWorkForUniversity.Data.Entities;
-using QualificationWorkForUniversity.Data.EntityConfigurations;
-using Microsoft.EntityFrameworkCore;
-using QualificationWorkForUniversity.Data.EntityConfiguration;
+﻿using QualificationWorkForUniversity.Data.EntityConfigurations;
 
 namespace QualificationWorkForUniversity.Data
 {
@@ -13,6 +10,8 @@ namespace QualificationWorkForUniversity.Data
         }
 
         public DbSet<CatalogEntity> CatalogItems { get; set; } = null!;
+
+        public DbSet<RoleEntity> Roles { get; set; }
 
         public DbSet<UserEntity> Users { get; set; } = null!;
 
@@ -26,6 +25,7 @@ namespace QualificationWorkForUniversity.Data
             builder.ApplyConfiguration(new OrderEntityTypeConfiguration());
             builder.ApplyConfiguration(new OrderDetailsEntityTypeConfiguration());
             builder.ApplyConfiguration(new UserEntityConfiguration());
+            builder.ApplyConfiguration(new RoleEntityTypeConfiguration());
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using QualificationWorkForUniversity.Controllers.Order;
-using QualificationWorkForUniversity.Models.Dtos.User;
-using QualificationWorkForUniversity.Models.Requests.User;
-using QualificationWorkForUniversity.Services.User.Abstractions;
+﻿using QualificationWorkForUniversity.Models.Dtos.User;
 
 namespace QualificationWorkForUniversity.Controllers.User
 {

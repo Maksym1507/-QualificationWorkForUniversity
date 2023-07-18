@@ -1,6 +1,6 @@
 ﻿namespace QualificationWorkForUniversity.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     public class UserBffController : ControllerBase

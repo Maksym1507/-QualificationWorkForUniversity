@@ -26,7 +26,7 @@ namespace QualificationWorkForUniversity.Repositories.User
 
         public async Task<UserEntity?> GetByIdAsync(string id)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(f => f.Id == id);
+            return await _dbContext.Users.Include(i => i.Role).FirstOrDefaultAsync(f => f.Id == id);
         }
 
         public async Task<UserEntity?> GetByEmailAsync(string email)

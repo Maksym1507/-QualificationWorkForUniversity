@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace QualificationWorkForUniversity.Data.EntityConfiguration
+namespace QualificationWorkForUniversity.Data.EntityConfigurations
 {
     public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
     {

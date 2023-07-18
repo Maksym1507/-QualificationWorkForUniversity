@@ -1,5 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using IdentityServer.Data;
+using IdentityServer4.Services;
+using IdentityServer.Services;
+using IdentityServer.Repositories.Abstractions;
+using IdentityServer.Repositories;
+using Infrastructure.Services.Abstractions;
+using Infrastructure.Services;
 
 namespace IdentityServer
 {
@@ -15,17 +21,27 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            });
+            services.AddTransient<IUserRepository, UserRepository>();
+
+            services.AddDbContextFactory<ApplicationDbContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IDbContextWrapper<ApplicationDbContext>, DbContextWrapper<ApplicationDbContext>>();
 
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(Configurations.Apis)
                 .AddInMemoryClients(Configurations.Clients)
                 .AddResourceOwnerValidator<UserPasswordValidator>()
+                .AddProfileService<ProfileService>()
                 .AddInMemoryIdentityResources(Configurations.IdentityResources());
+
+            services.AddSingleton<ICorsPolicyService>((container) =>
+            {
+                var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
+                return new DefaultCorsPolicyService(logger)
+                {
+                    AllowAll = true
+                };
+            });
         }
 
         public void Configure(IApplicationBuilder app)

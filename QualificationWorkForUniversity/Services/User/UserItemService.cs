@@ -28,6 +28,8 @@ namespace QualificationWorkForUniversity.Services.User
             return await ExecuteSafeAsync(async () =>
             {
                 var userToAdd = _mapper.Map<UserEntity>(user);
+                userToAdd.RoleId = 2;
+
                 var id = await _userRepository.AddAsync(userToAdd);
                 _loggerService.LogInformation($"Created user item with Id = {id}");
                 return id;

@@ -4,6 +4,10 @@
     {
         public string Id { get; set; } = null!;
 
+        public RoleEntity Role { get; set; }
+
+        public int RoleId { get; set; }
+
         public string Email { get; set; } = null!;
 
         public string Password { get; set; } = null!;

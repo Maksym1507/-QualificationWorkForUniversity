@@ -4,15 +4,15 @@ import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import OrderModel from "../../models/orderModel";
 import { basketStore, orderStore, userStore } from "../../App";
-import OrderResponse from "../../models/responses/orderResponse";
 
 
 const OrderComponent: FC = observer(() => {
-  const [orderMessage, setOrderMessage] = useState<OrderResponse | null>();
+  const [orderMessage, setOrderMessage] = useState<number | null>();
 
   useEffect(() => {
     if (orderMessage) {
-      if ((orderMessage as OrderResponse)) {
+      if ((orderMessage as number)) {
+        console.log(orderMessage);
         basketStore.truncateBasket();
         alert(`Order was confirmed with id = ${orderMessage}`);
       }
@@ -100,7 +100,7 @@ const OrderComponent: FC = observer(() => {
                 style={{ maxWidth: "500px", maxHeight: "310px" }}
               >
                 {basketStore.items!.map((product, index) => (
-                  <>
+                  <div key={index}>
                     <div className="card me-2 shadow-0 border mb-2">
                       <div className="card-body">
                         <div className="row">
@@ -130,7 +130,7 @@ const OrderComponent: FC = observer(() => {
                         </div>
                       </div>
                     </div>
-                  </>
+                  </div>
                 ))}
               </div>
             </div>

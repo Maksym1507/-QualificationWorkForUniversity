@@ -6,6 +6,7 @@ import { basketStore, catalogStore, userStore } from "../../App";
 import basketImg from "../../images/shopping-cart.png";
 import userProfileImg from "../../images/user-profile.png";
 import AuthenticationModalWindowComponent from "../ModalWindow/Authentication";
+import CreateProductWindowComponent from "../ModalWindow/CreateProductWindowComponent.tsx";
 
 const HeaderComponent: FC = observer(() => {
   return (
@@ -39,6 +40,7 @@ const HeaderComponent: FC = observer(() => {
                 />
                 <span className="ms-1">{basketStore.getTotalCountOfBasketItems()}</span>
               </Nav.Link>
+              {userStore.user.role === "admin" && <CreateProductWindowComponent />}
             </Nav>
             {userStore.isAuthenticated && (
               <Nav

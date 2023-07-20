@@ -2,6 +2,7 @@
 
 namespace QualificationWorkForUniversity.Controllers.User
 {
+    [Authorize]
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     public class UserController : ControllerBase
@@ -18,6 +19,7 @@ namespace QualificationWorkForUniversity.Controllers.User
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(AddItemResponse<string?>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Add(AddUserRequest request)
         {
@@ -34,6 +36,7 @@ namespace QualificationWorkForUniversity.Controllers.User
         }
 
         [HttpPost("{id}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(UpdateItemResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(string id, AddUserRequest request)
         {
@@ -42,6 +45,7 @@ namespace QualificationWorkForUniversity.Controllers.User
         }
 
         [HttpPost("{id}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(DeleteItemResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Delete(string id)
         {

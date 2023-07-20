@@ -2,6 +2,7 @@
 
 namespace QualificationWorkForUniversity.Controllers.Catalog
 {
+    [Authorize]
     [ApiController]
     [Route(ComponentDefaults.DefaultRoute)]
     public class CatalogItemController : ControllerBase
@@ -18,6 +19,7 @@ namespace QualificationWorkForUniversity.Controllers.Catalog
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Add(CreateUpdateProductRequest request)
         {
@@ -26,6 +28,7 @@ namespace QualificationWorkForUniversity.Controllers.Catalog
         }
 
         [HttpPost("{id}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(UpdateItemResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Update(int id, CreateUpdateProductRequest request)
         {
@@ -34,6 +37,7 @@ namespace QualificationWorkForUniversity.Controllers.Catalog
         }
 
         [HttpPost("{id}")]
+        [Authorize(Roles = "admin")]
         [ProducesResponseType(typeof(DeleteItemResponse<bool>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Delete(int id)
         {

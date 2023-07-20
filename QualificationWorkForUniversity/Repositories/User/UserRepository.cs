@@ -31,12 +31,12 @@ namespace QualificationWorkForUniversity.Repositories.User
 
         public async Task<UserEntity?> GetByEmailAsync(string email)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(a => a.Email == email);
+            return await _dbContext.Users.Include(i => i.Role).FirstOrDefaultAsync(a => a.Email == email);
         }
 
         public async Task<UserEntity?> GetByEmailAndPasswordAsync(string email, string password)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(a => a.Email == email && a.Password == password);
+            return await _dbContext.Users.Include(i => i.Role).FirstOrDefaultAsync(a => a.Email == email && a.Password == password);
         }
 
         public async Task<bool> UpdateAsync(UserEntity item)

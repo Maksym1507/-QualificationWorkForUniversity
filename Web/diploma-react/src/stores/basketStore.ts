@@ -64,7 +64,6 @@ export class BasketStore {
   }
 
   decreaseItemCount(id: number) {
-    debugger;
     const isFound = this.items.findIndex((x) => x.product.id === id);
 
     if (this.items[isFound].count === 1) {

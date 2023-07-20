@@ -1,73 +1,71 @@
-﻿using QualificationWorkForUniversity.Repositories.Catalog.Abstractions;
-using QualificationWorkForUniversity.Services.Catalog.Abstractions;
-
-namespace QualificationWorkForUniversity.Services.Catalog;
-
-public class CatalogItemService : BaseDataService<ApplicationDbContext>, ICatalogItemService
+﻿namespace QualificationWorkForUniversity.Services.Catalog
 {
-    private readonly ICatalogItemRepository _catalogItemRepository;
-    private readonly ILogger<CatalogItemService> _loggerService;
-
-    public CatalogItemService(
-        IDbContextWrapper<ApplicationDbContext> dbContextWrapper,
-        ILogger<BaseDataService<ApplicationDbContext>> logger,
-        ICatalogItemRepository catalogItemRepository,
-        ILogger<CatalogItemService> loggerService)
-        : base(dbContextWrapper, logger)
+    public class CatalogItemService : BaseDataService<ApplicationDbContext>, ICatalogItemService
     {
-        _catalogItemRepository = catalogItemRepository;
-        _loggerService = loggerService;
-    }
+        private readonly ICatalogItemRepository _catalogItemRepository;
+        private readonly ILogger<CatalogItemService> _loggerService;
 
-    public async Task<int?> AddAsync(string title, string description, decimal price, double weight, string pictureFileName)
-    {
-        return await ExecuteSafeAsync(async () =>
+        public CatalogItemService(
+            IDbContextWrapper<ApplicationDbContext> dbContextWrapper,
+            ILogger<BaseDataService<ApplicationDbContext>> logger,
+            ICatalogItemRepository catalogItemRepository,
+            ILogger<CatalogItemService> loggerService)
+            : base(dbContextWrapper, logger)
         {
-            var id = await _catalogItemRepository.AddAsync(title, description, price, weight, pictureFileName);
-            _loggerService.LogInformation($"Created catalog item with Id = {id}");
-            return id;
-        });
-    }
+            _catalogItemRepository = catalogItemRepository;
+            _loggerService = loggerService;
+        }
 
-    public async Task<bool> UpdateAsync(int id, string title, string description, decimal price, double weight, string pictureFileName)
-    {
-        return await ExecuteSafeAsync(async () =>
+        public async Task<int?> AddAsync(string title, string description, decimal price, double weight, string pictureFileName)
         {
-            var itemToUpdate = await _catalogItemRepository.GetByIdAsync(id);
-
-            if (itemToUpdate == null)
+            return await ExecuteSafeAsync(async () =>
             {
-                _loggerService.LogWarning($"Not founded catalog item with Id = {id}");
-                return false;
-            }
+                var id = await _catalogItemRepository.AddAsync(title, description, price, weight, pictureFileName);
+                _loggerService.LogInformation($"Created catalog item with Id = {id}");
+                return id;
+            });
+        }
 
-            itemToUpdate.Title = title;
-            itemToUpdate.Description = description;
-            itemToUpdate.Price = price;
-            itemToUpdate.Weight = weight;
-            itemToUpdate.PictureFileName = pictureFileName;
-
-            var isUpdated = await _catalogItemRepository.UpdateAsync(itemToUpdate);
-            _loggerService.LogInformation($"Updated catalog item with Id = {id}");
-            return isUpdated;
-        });
-    }
-
-    public async Task<bool> DeleteAsync(int id)
-    {
-        return await ExecuteSafeAsync(async () =>
+        public async Task<bool> UpdateAsync(int id, string title, string description, decimal price, double weight, string pictureFileName)
         {
-            var itemToDelete = await _catalogItemRepository.GetByIdAsync(id);
-
-            if (itemToDelete == null)
+            return await ExecuteSafeAsync(async () =>
             {
-                _loggerService.LogWarning($"Not founded catalog item with Id = {id}");
-                return false;
-            }
+                var itemToUpdate = await _catalogItemRepository.GetByIdAsync(id);
 
-            var isDeleted = await _catalogItemRepository.DeleteAsync(itemToDelete);
-            _loggerService.LogInformation($"Removed catalog item with Id = {id}");
-            return isDeleted;
-        });
+                if (itemToUpdate == null)
+                {
+                    _loggerService.LogWarning($"Not founded catalog item with Id = {id}");
+                    return false;
+                }
+
+                itemToUpdate.Title = title;
+                itemToUpdate.Description = description;
+                itemToUpdate.Price = price;
+                itemToUpdate.Weight = weight;
+                itemToUpdate.PictureFileName = pictureFileName;
+
+                var isUpdated = await _catalogItemRepository.UpdateAsync(itemToUpdate);
+                _loggerService.LogInformation($"Updated catalog item with Id = {id}");
+                return isUpdated;
+            });
+        }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            return await ExecuteSafeAsync(async () =>
+            {
+                var itemToDelete = await _catalogItemRepository.GetByIdAsync(id);
+
+                if (itemToDelete == null)
+                {
+                    _loggerService.LogWarning($"Not founded catalog item with Id = {id}");
+                    return false;
+                }
+
+                var isDeleted = await _catalogItemRepository.DeleteAsync(itemToDelete);
+                _loggerService.LogInformation($"Removed catalog item with Id = {id}");
+                return isDeleted;
+            });
+        }
     }
 }

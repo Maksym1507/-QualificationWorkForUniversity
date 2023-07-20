@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { CatalogItemDto } from "../models/dtos/catalogItemsDto";
 import * as catalogItemsApi from "../api/modules/catalogItems";
+import CreateUpdateProductRequest from "../models/requests/createUpdateProductRequest";
 
 class CatalogStore {
   singleCatalogItem: CatalogItemDto = {} as CatalogItemDto;
@@ -56,6 +57,10 @@ class CatalogStore {
 
   changeFilter(filter: string) {
     this.filter = filter;
+  }
+
+  async createCatalogItem(newCatalogItem: CreateUpdateProductRequest) {
+    return await catalogItemsApi.addCatalogItem(newCatalogItem);
   }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import UpdateUserResponse from "../../../models/responses/updateUserResponse";
+import UpdateUserResponse from "../../../models/responses/updateItemResponse";
 import UpdateUserRequest from "../../../models/requests/updateUserRequest";
 import { userStore } from "../../../App";
 import { Button, Form, Modal } from "react-bootstrap";
@@ -32,6 +32,12 @@ const UpdateUserModalWindowComponent = () => {
 
   const handleCloseUpdateUserModalWindow = () => {
     setShowUpdateUserModalWindow(false);
+    setUpdateUserformData({
+      email: userStore.user.email,
+      name: userStore.user.name,
+      lastName: userStore.user.lastName,
+      phoneNumber: userStore.user.phoneNumber
+    } as UpdateUserRequest);
     reset();
   };
 

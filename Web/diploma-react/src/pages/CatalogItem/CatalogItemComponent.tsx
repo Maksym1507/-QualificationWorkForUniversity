@@ -2,9 +2,10 @@ import { observer } from "mobx-react-lite";
 import { FC, ReactElement, useEffect } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { basketStore, catalogStore } from "../../App";
+import { basketStore, catalogStore, userStore } from "../../App";
 import BasketItemModel from "../../models/basketItemModel";
 import NoMatchComponent from "../../components/NoMatch/NoMatchComponent";
+import UpdateProductModalWindowComponent from "../../components/ModalWindow/UpdateProduct/UpdateProductWindowComponent";
 
 const CatalogItemComponent: FC<any> = observer((): ReactElement => {
   const { id } = useParams();
@@ -13,10 +14,16 @@ const CatalogItemComponent: FC<any> = observer((): ReactElement => {
   useEffect(() => {
     (async () => {
       if (id) {
-        await catalogStore.getSingleCatalogItem(id);
+        await catalogStore.getSingleCatalogItem(+id);
       }
     })();
   }, [id]);
+
+  function handleClick() {
+    (async () => {
+      await catalogStore.deleteCatalogItem(catalogStore.singleCatalogItem.id, navigation);
+    })();
+  }
 
   if (catalogStore.singleCatalogItem) {
     if (catalogStore.singleCatalogItem.id) {
@@ -72,6 +79,18 @@ const CatalogItemComponent: FC<any> = observer((): ReactElement => {
                           >
                             Add to basket
                           </button>
+                          {userStore.user.role === "admin" && <UpdateProductModalWindowComponent />}
+                          {userStore.user.role === "admin" &&
+                            <img
+                              className="ms-3 mt-1"
+                              width={25}
+                              height={25}
+                              src="https://img.icons8.com/ios-glyphs/512/trash.png"
+                              alt="delete"
+                              onClick={handleClick}
+                            />
+                          }
+
                         </div>
                       </div>
                     </div>

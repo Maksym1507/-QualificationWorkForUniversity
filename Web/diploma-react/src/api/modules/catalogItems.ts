@@ -2,7 +2,7 @@ import { config } from "../../constants/api-constants";
 import CreateUpdateProductRequest from "../../models/requests/createUpdateProductRequest";
 import apiClient from "../client";
 
-export const getCatalogItemById = (id: string) =>
+export const getCatalogItemById = (id: number) =>
   apiClient({
     url: config.PRODUCT_URL,
     path: `itemById/${id}`,
@@ -22,5 +22,20 @@ export const addCatalogItem = (request: CreateUpdateProductRequest) =>
     url: config.PRODUCT_URL,
     path: `add`,
     method: "POST",
-    body: request 
+    body: request
+  });
+
+export const updateCatalogItem = (id: number, request: CreateUpdateProductRequest) =>
+  apiClient({
+    url: config.PRODUCT_URL,
+    path: `update/${id}`,
+    method: "POST",
+    body: request
+  });
+
+export const deleteCatalogItem = (id: number) =>
+  apiClient({
+    url: config.PRODUCT_URL,
+    path: `delete/${id}`,
+    method: "POST"
   });

@@ -6,7 +6,7 @@ import { basketStore, catalogStore, userStore } from "../../App";
 import basketImg from "../../images/shopping-cart.png";
 import userProfileImg from "../../images/user-profile.png";
 import AuthenticationModalWindowComponent from "../ModalWindow/Authentication";
-import CreateProductWindowComponent from "../ModalWindow/CreateProductWindowComponent.tsx";
+import CreateProductWindowComponent from "../ModalWindow/CreateProduct";
 
 const HeaderComponent: FC = observer(() => {
   return (
